@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mosaic Pricing — Plans for Teams of All Sizes</title>
+  <meta content="Explore Mosaic's flexible pricing plans designed to meet the needs of teams of all sizes. Compare features and find the perfect plan to boost your team's productivity." name="description">
+  <meta content="Mosaic Pricing — Plans for Teams of All Sizes" property="og:title">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="https://www.mosaicapp.com/mosaic-pricing" rel="canonical">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/redesign.css" rel="stylesheet">
+  <style>
+    /* Pricing-specific styles */
+    .m-pricing-hero {
+      padding-top: calc(var(--nav-height) + var(--space-4xl));
+      padding-bottom: var(--space-4xl);
+      text-align: center;
+      background: linear-gradient(180deg, var(--m-off-white) 0%, var(--m-white) 100%);
+    }
+
+    .m-pricing-hero .m-display {
+      margin-bottom: var(--space-lg);
+    }
+
+    .m-pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .m-price-card {
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      border: 1px solid var(--m-ghost);
+      background: var(--m-white);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--duration-base) var(--ease-out);
+      position: relative;
+    }
+
+    .m-price-card:hover {
+      border-color: var(--m-blue-light);
+      box-shadow: 0 16px 48px rgba(42, 91, 215, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .m-price-card--featured {
+      border-color: var(--m-blue);
+      box-shadow: 0 16px 48px rgba(42, 91, 215, 0.1);
+      background: linear-gradient(180deg, rgba(42, 91, 215, 0.02) 0%, var(--m-white) 100%);
+    }
+
+    .m-price-card__badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--m-blue);
+      color: var(--m-white);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: 4px 16px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.04em;
+    }
+
+    .m-price-card__name {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--m-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .m-price-card__desc {
+      font-size: var(--text-sm);
+      color: var(--m-text-secondary);
+      margin-bottom: var(--space-xl);
+      line-height: 1.5;
+    }
+
+    .m-price-card__price {
+      margin-bottom: var(--space-xl);
+    }
+
+    .m-price-card__amount {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--m-text);
+      letter-spacing: -0.02em;
+    }
+
+    .m-price-card__period {
+      font-size: var(--text-sm);
+      color: var(--m-gray-300);
+    }
+
+    .m-price-card__cta {
+      margin-bottom: var(--space-xl);
+    }
+
+    .m-price-card__features {
+      list-style: none;
+      flex-grow: 1;
+    }
+
+    .m-price-card__feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: var(--text-sm);
+      color: var(--m-text);
+      border-top: 1px solid var(--m-ghost);
+    }
+
+    .m-price-card__feature:last-child {
+      border-bottom: 1px solid var(--m-ghost);
+    }
+
+    .m-price-card__check {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--m-blue);
+    }
+
+    /* Feature comparison table */
+    .m-compare {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .m-compare__toggle {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .m-compare__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .m-compare__table th,
+    .m-compare__table td {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: var(--text-sm);
+      border-bottom: 1px solid var(--m-ghost);
+    }
+
+    .m-compare__table th {
+      font-weight: 600;
+      color: var(--m-text);
+      background: var(--m-off-white);
+      position: sticky;
+      top: var(--nav-height);
+      z-index: 10;
+    }
+
+    .m-compare__table th:not(:first-child) {
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .m-compare__table td:not(:first-child) {
+      text-align: center;
+    }
+
+    .m-compare__section-header {
+      font-weight: 700;
+      color: var(--m-blue);
+      background: rgba(42, 91, 215, 0.04);
+    }
+
+    .m-compare__check {
+      width: 20px;
+      height: 20px;
+      color: var(--m-blue);
+      display: inline-block;
+    }
+
+    .m-compare__x {
+      width: 16px;
+      height: 16px;
+      color: var(--m-gray-200);
+      display: inline-block;
+    }
+
+    .m-compare__note {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--m-gray-300);
+      margin-top: 2px;
+    }
+
+    /* Security badges */
+    .m-security {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3xl);
+      flex-wrap: wrap;
+    }
+
+    .m-security__badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .m-security__badge img {
+      height: 64px;
+      width: auto;
+      opacity: 0.8;
+    }
+
+    .m-security__badge-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--m-gray-400);
+    }
+
+    /* FAQ */
+    .m-faq__list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .m-faq__item {
+      border-bottom: 1px solid var(--m-ghost);
+    }
+
+    .m-faq__question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-lg) 0;
+      cursor: pointer;
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--m-text);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-primary);
+      transition: color var(--duration-fast) ease;
+    }
+
+    .m-faq__question:hover {
+      color: var(--m-blue);
+    }
+
+    .m-faq__chevron {
+      width: 20px;
+      height: 20px;
+      transition: transform var(--duration-fast) ease;
+      flex-shrink: 0;
+    }
+
+    .m-faq__item.is-open .m-faq__chevron {
+      transform: rotate(180deg);
+    }
+
+    .m-faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--duration-base) var(--ease-out);
+    }
+
+    .m-faq__item.is-open .m-faq__answer {
+      max-height: 300px;
+    }
+
+    .m-faq__answer-inner {
+      padding-bottom: var(--space-lg);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      color: var(--m-text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .m-pricing-cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .m-compare__table {
+        font-size: 12px;
+      }
+
+      .m-compare__table th,
+      .m-compare__table td {
+        padding: 8px 6px;
+      }
+    }
+  </style>
+</head>
+<body class="redesign">
+
+  <!-- ====== NAVIGATION (same as homepage) ====== -->
+  <nav class="m-nav" id="mainNav">
+    <div class="m-nav__inner">
+      <a href="index-redesign.html" class="m-nav__logo">
+        <img src="images/Mosaic-logo-for-email.png" alt="Mosaic" height="28">
+      </a>
+      <ul class="m-nav__links">
+        <li class="m-dropdown">
+          <span class="m-nav__link m-nav__link--dropdown">Product</span>
+          <div class="m-dropdown__menu">
+            <a href="product/resource-planning.html" class="m-dropdown__item">Resource Planning</a>
+            <a href="product/resource-allocation.html" class="m-dropdown__item">Resource Allocation</a>
+            <a href="product/capacity-planning.html" class="m-dropdown__item">Capacity Planning</a>
+            <a href="product/workforce-intelligence.html" class="m-dropdown__item">Workforce Intelligence</a>
+            <a href="product/project-planning.html" class="m-dropdown__item">Project Planning</a>
+            <a href="product/project-financial-controls.html" class="m-dropdown__item">Financial Controls</a>
+            <a href="product/ai-automation-forecasting.html" class="m-dropdown__item">AI & Forecasting</a>
+          </div>
+        </li>
+        <li><a href="why-mosaic.html" class="m-nav__link">Why Mosaic?</a></li>
+        <li><a href="pricing-redesign.html" class="m-nav__link" style="color: var(--m-text);">Pricing</a></li>
+        <li class="m-dropdown">
+          <span class="m-nav__link m-nav__link--dropdown">Resources</span>
+          <div class="m-dropdown__menu">
+            <a href="casestudies.html" class="m-dropdown__item">Customer Stories</a>
+            <a href="blog.html" class="m-dropdown__item">Blog</a>
+            <a href="events-webinars.html" class="m-dropdown__item">Events & Webinars</a>
+          </div>
+        </li>
+      </ul>
+      <div class="m-nav__actions">
+        <a href="https://login.mosaicapp.com/login" class="m-nav__signin">Sign In</a>
+        <a href="book-a-demo.html" class="m-btn m-btn--primary m-btn--sm">Book Demo</a>
+      </div>
+      <div class="m-nav__mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== PRICING HERO ====== -->
+  <section class="m-pricing-hero">
+    <div class="m-container">
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div class="m-label m-mb-md">Pricing</div>
+        <h1 class="m-display m-display--section">The modern way to manage people and projects.<br>Get started today.</h1>
+        <p class="m-body m-body--lg">Flexible plans designed to scale with your team. Start with what you need, grow when you're ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRICING CARDS ====== -->
+  <section class="m-section m-section--compact" style="padding-top: 0;">
+    <div class="m-container">
+      <div class="m-pricing-cards">
+        <!-- Starter -->
+        <div class="m-price-card">
+          <div class="m-price-card__name">Starter</div>
+          <p class="m-price-card__desc">For small teams getting started with resource planning and project management.</p>
+          <div class="m-price-card__price">
+            <span class="m-price-card__amount">$9.99</span>
+            <span class="m-price-card__period">/user/month</span>
+          </div>
+          <div class="m-price-card__cta">
+            <a href="30-day-free-trial/21-50-users.html" class="m-btn m-btn--secondary" style="width: 100%;">Start Free Trial</a>
+          </div>
+          <ul class="m-price-card__features">
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Task Lists & Project Portfolios
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Timesheets
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              People & Project Work Planners
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Project Schedules & Templates
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              iOS & Android Apps
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              10 Project Guests
+            </li>
+          </ul>
+        </div>
+
+        <!-- Professional -->
+        <div class="m-price-card m-price-card--featured">
+          <div class="m-price-card__badge">Most Popular</div>
+          <div class="m-price-card__name">Professional</div>
+          <p class="m-price-card__desc">For growing teams that need advanced planning, automation, and financial tools.</p>
+          <div class="m-price-card__price">
+            <span class="m-price-card__amount">$14.99</span>
+            <span class="m-price-card__period">/user/month</span>
+          </div>
+          <div class="m-price-card__cta">
+            <a href="book-a-demo.html" class="m-btn m-btn--primary" style="width: 100%;">Book a Demo</a>
+          </div>
+          <ul class="m-price-card__features">
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Everything in Starter, plus:
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Shareable Dashboards
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Financial Integration (Basic)
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              AI Work Plan Suggestions
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              All Reports (Utilization, Profit, Budget)
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Onboarding + Chat & Phone Support
+            </li>
+          </ul>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="m-price-card">
+          <div class="m-price-card__name">Enterprise</div>
+          <p class="m-price-card__desc">For large organizations needing SSO, advanced forecasting, and dedicated support.</p>
+          <div class="m-price-card__price">
+            <span class="m-price-card__amount">Custom</span>
+          </div>
+          <div class="m-price-card__cta">
+            <a href="book-a-demo.html" class="m-btn m-btn--secondary" style="width: 100%;">Contact Sales</a>
+          </div>
+          <ul class="m-price-card__features">
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Everything in Professional, plus:
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              SSO & Two-Factor Authentication
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              AI Workload, Revenue & Hiring Forecast
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Multiple Integrations (Custom)
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Custom Project Fields & Advanced Search
+            </li>
+            <li class="m-price-card__feature">
+              <svg class="m-price-card__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Dedicated CSM + Ongoing Training
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECURITY BADGES ====== -->
+  <section class="m-section m-section--compact m-section--ghost m-reveal">
+    <div class="m-container">
+      <h2 class="m-heading m-heading--lg m-text-center m-mb-2xl">Enterprise-Grade Security</h2>
+      <div class="m-security">
+        <div class="m-security__badge">
+          <img src="images/SOC_1.png" alt="SOC 2 Type I">
+          <span class="m-security__badge-label">SOC 2 Type I</span>
+        </div>
+        <div class="m-security__badge">
+          <img src="images/SOC_2-removebg.png" alt="SOC 2 Type II">
+          <span class="m-security__badge-label">SOC 2 Type II</span>
+        </div>
+        <div class="m-security__badge">
+          <img src="images/CSA-STAR-Level1.png" alt="CSA STAR Level 1">
+          <span class="m-security__badge-label">STAR Level 1</span>
+        </div>
+        <div class="m-security__badge">
+          <img src="images/GDPR.png" alt="GDPR Compliant">
+          <span class="m-security__badge-label">GDPR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURE COMPARISON TABLE ====== -->
+  <section class="m-section m-reveal" id="compare">
+    <div class="m-container">
+      <div class="m-compare">
+        <h2 class="m-heading m-heading--lg m-text-center m-mb-2xl">Full Feature Comparison</h2>
+        <div style="overflow-x: auto;">
+          <table class="m-compare__table">
+            <thead>
+              <tr>
+                <th style="min-width: 200px;">Feature</th>
+                <th>Starter</th>
+                <th>Professional</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Project & Team Management -->
+              <tr><td colspan="4" class="m-compare__section-header">Project & Team Management</td></tr>
+              <tr><td>Task Lists</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Project Portfolios</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Timesheets</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Project Guests</td><td>10 Max</td><td>Unlimited</td><td>Unlimited</td></tr>
+
+              <!-- Resource Management -->
+              <tr><td colspan="4" class="m-compare__section-header">Resource Management</td></tr>
+              <tr><td>People Work Planner</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Shareable Dashboards</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Single Integration</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+
+              <!-- Automations -->
+              <tr><td colspan="4" class="m-compare__section-header">AI & Automations</td></tr>
+              <tr><td>Work Plan Suggestions</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Automatic Rescheduling</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Automated Timesheets</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>AI Workload Forecast</td><td>—</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Revenue & Hiring Forecast</td><td>—</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+
+              <!-- Reports -->
+              <tr><td colspan="4" class="m-compare__section-header">Reports</td></tr>
+              <tr><td>Utilization & Workload</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Profit & Budget Tracking</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Demand & Skills Reports</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+
+              <!-- Enterprise -->
+              <tr><td colspan="4" class="m-compare__section-header">Enterprise Only</td></tr>
+              <tr><td>Single Sign-On (SSO)</td><td>—</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Two-Factor Authentication</td><td>—</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Multiple Integrations</td><td>—</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+              <tr><td>Dedicated Customer Success Manager</td><td>—</td><td>—</td><td><svg class="m-compare__check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="m-body--sm" style="margin-top: var(--space-lg); color: var(--m-gray-300);">*Additional Guests: $1.99/month. Project Contractors: $4.99/month. Additional charges apply for integrations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STATS / IMPACT ====== -->
+  <section class="m-section m-section--dark m-section--compact m-reveal">
+    <div class="m-container">
+      <h2 class="m-heading m-heading--lg m-text-center m-mb-2xl" style="color: var(--m-white);">Mosaic's Impact</h2>
+      <div class="m-stats">
+        <div class="m-stat">
+          <div class="m-stat__number">30%+</div>
+          <div class="m-stat__label">Utilization Improvement</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">50%</div>
+          <div class="m-stat__label">Less Admin Time</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">3x</div>
+          <div class="m-stat__label">Faster Planning</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">454</div>
+          <div class="m-stat__label">Inc. 5000 Ranking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <section class="m-section m-reveal" id="faq">
+    <div class="m-container">
+      <h2 class="m-display m-display--small m-text-center m-mb-3xl">Frequently Asked Questions</h2>
+      <div class="m-faq__list">
+        <div class="m-faq__item">
+          <button class="m-faq__question" onclick="this.parentElement.classList.toggle('is-open')">
+            Is there a free trial?
+            <svg class="m-faq__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="m-faq__answer">
+            <div class="m-faq__answer-inner">Yes, Mosaic offers a 30-day free trial on the Starter plan so you can explore the platform before committing. No credit card required.</div>
+          </div>
+        </div>
+        <div class="m-faq__item">
+          <button class="m-faq__question" onclick="this.parentElement.classList.toggle('is-open')">
+            Can I upgrade or downgrade at any time?
+            <svg class="m-faq__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="m-faq__answer">
+            <div class="m-faq__answer-inner">Absolutely. You can change your plan at any time. Upgrades take effect immediately, and downgrades apply at the end of your current billing cycle.</div>
+          </div>
+        </div>
+        <div class="m-faq__item">
+          <button class="m-faq__question" onclick="this.parentElement.classList.toggle('is-open')">
+            What integrations are supported?
+            <svg class="m-faq__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="m-faq__answer">
+            <div class="m-faq__answer-inner">Mosaic integrates with popular project management, financial, and HR tools. The Professional plan includes one integration, while the Enterprise plan supports multiple custom integrations.</div>
+          </div>
+        </div>
+        <div class="m-faq__item">
+          <button class="m-faq__question" onclick="this.parentElement.classList.toggle('is-open')">
+            What kind of support is included?
+            <svg class="m-faq__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="m-faq__answer">
+            <div class="m-faq__answer-inner">The Professional plan includes onboarding and chat & phone support. Enterprise customers get a dedicated Customer Success Manager, ongoing training, and follow-up Q&A sessions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="m-section m-section--dark m-section--gradient m-reveal">
+    <div class="m-container">
+      <div class="m-cta__inner">
+        <h2 class="m-display m-display--small" style="color: var(--m-white);">Ready to run a smarter, more profitable business?</h2>
+        <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-top: var(--space-lg); margin-bottom: var(--space-2xl);">The math is simple — optimizing staff scheduling improves profitability. See Mosaic in action.</p>
+        <div class="m-cta__actions">
+          <a href="book-a-demo.html" class="m-btn m-btn--white m-btn--lg">Book a Demo</a>
+          <a href="roi-with-strategic-resource-planning.html" class="m-btn m-btn--ghost">Calculate My ROI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="m-footer">
+    <div class="m-container">
+      <div class="m-footer__top">
+        <div class="m-footer__brand">
+          <img src="images/Mosaic-logo-for-email.png" alt="Mosaic">
+          <p>The first AI-powered platform built to manage your people and projects together, reducing burnout while improving profitability.</p>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Product</div>
+          <ul class="m-footer__links">
+            <li><a href="product/resource-planning.html" class="m-footer__link">Resource Planning</a></li>
+            <li><a href="product/resource-allocation.html" class="m-footer__link">Resource Allocation</a></li>
+            <li><a href="product/capacity-planning.html" class="m-footer__link">Capacity Planning</a></li>
+            <li><a href="product/ai-automation-forecasting.html" class="m-footer__link">AI & Forecasting</a></li>
+            <li><a href="integrations.html" class="m-footer__link">Integrations</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Resources</div>
+          <ul class="m-footer__links">
+            <li><a href="blog.html" class="m-footer__link">Blog</a></li>
+            <li><a href="casestudies.html" class="m-footer__link">Customer Stories</a></li>
+            <li><a href="glossary.html" class="m-footer__link">Glossary</a></li>
+            <li><a href="events-webinars.html" class="m-footer__link">Events & Webinars</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Company</div>
+          <ul class="m-footer__links">
+            <li><a href="why-mosaic.html" class="m-footer__link">Why Mosaic?</a></li>
+            <li><a href="mosaic-pricing.html" class="m-footer__link">Pricing</a></li>
+            <li><a href="mission.html" class="m-footer__link">Mission</a></li>
+            <li><a href="book-a-demo.html" class="m-footer__link">Book a Demo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="m-footer__bottom">
+        <div class="m-footer__legal">&copy; 2026 Mosaic. All rights reserved.</div>
+        <div class="m-footer__legal-links">
+          <a href="privacy-policy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="cookies.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-direction-aware navigation
+    (function() {
+      const nav = document.getElementById('mainNav');
+      let lastScroll = 0, ticking = false;
+      function updateNav() {
+        const s = window.pageYOffset;
+        nav.classList.toggle('m-nav--scrolled', s > 80);
+        nav.classList.toggle('m-nav--hidden', s > lastScroll && s > 300);
+        lastScroll = s; ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+      });
+    })();
+    // Scroll reveal
+    (function() {
+      var reveals = document.querySelectorAll('.m-reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('m-reveal--visible'); observer.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>

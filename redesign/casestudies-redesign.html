@@ -1252,9 +1252,9 @@
       });
     })();
 
-    // Count-up animation for .m-stat__number elements
+    // Count-up animation for .m-stat__number and .cs-proof-bar__number elements
     (function() {
-      var statNumbers = document.querySelectorAll('.m-stat__number');
+      var statNumbers = document.querySelectorAll('.m-stat__number, .cs-proof-bar__number');
       if (!statNumbers.length) return;
 
       var observer = new IntersectionObserver(function(entries) {

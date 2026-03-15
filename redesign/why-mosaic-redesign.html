@@ -611,11 +611,27 @@
   </nav>
 
   <!-- ====== HERO — Bold conviction statement ====== -->
-  <section class="wm-hero">
+  <section class="wm-hero" style="position: relative;">
     <div class="wm-hero__bg">
       <div class="wm-hero__bg-orb"></div>
     </div>
-    <div class="m-container">
+    <div class="m-container" style="position: relative;">
+      <svg class="m-deco-growth" width="200" height="120" viewBox="0 0 200 120" fill="none" style="position: absolute; right: -40px; bottom: 20px; opacity: 0.1;">
+        <path d="M10 100 L50 70 L90 80 L130 40 L170 20 L190 10" stroke="#2a5bd7" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M10 100 L50 70 L90 80 L130 40 L170 20 L190 10 V120 H10Z" fill="url(#growthGrad)" opacity="0.3"/>
+        <defs>
+          <linearGradient id="growthGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a5bd7" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#2a5bd7" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="70" r="4" fill="#38d9c5"/>
+        <circle cx="90" cy="80" r="4" fill="#2a5bd7"/>
+        <circle cx="130" cy="40" r="4" fill="#38d9c5"/>
+        <circle cx="170" cy="20" r="4" fill="#5b8cfa"/>
+        <circle cx="190" cy="10" r="5" fill="#2a5bd7"/>
+        <polygon points="185,5 195,10 185,15" fill="#2a5bd7"/>
+      </svg>
       <div class="wm-hero__inner m-reveal">
         <div class="m-inc-badge" style="margin-bottom: var(--space-xl);">
           <span class="m-inc-badge__dot"></span>
@@ -1193,64 +1209,66 @@
       }
     })();
 
-    // Animate stat numbers on scroll
+    // Count-up animation for .wm-impact__number elements
     (function() {
-      var animated = false;
-      var statsSection = document.getElementById('impact');
-      if (!statsSection) return;
+      var impactNumbers = document.querySelectorAll('.wm-impact__number');
+      if (!impactNumbers.length) return;
 
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting && !animated) {
-            animated = true;
-            animateNumbers();
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.3 });
 
-      observer.observe(statsSection);
+      impactNumbers.forEach(function(el) { observer.observe(el); });
 
-      function animateNumbers() {
-        var cards = statsSection.querySelectorAll('.wm-impact__number');
-        cards.forEach(function(card) {
-          var text = card.textContent.trim();
-          var prefix = '';
-          var suffix = '';
-          var targetNum = 0;
+      function animateStat(el) {
+        var raw = el.textContent.trim();
+        var prefix = '';
+        var suffix = '';
+        var remaining = raw;
 
-          if (text.indexOf('+') === 0) {
-            prefix = '+';
-            text = text.substring(1);
+        // Extract leading prefix characters (+, $)
+        var prefixMatch = remaining.match(/^([+$]*)/);
+        if (prefixMatch && prefixMatch[1]) {
+          prefix = prefixMatch[1];
+          remaining = remaining.substring(prefix.length);
+        }
+
+        // Extract the numeric part (including decimals)
+        var numMatch = remaining.match(/^[\d.]+/);
+        if (!numMatch) return;
+        var numStr = numMatch[0];
+        suffix = remaining.substring(numStr.length); // e.g. "%+", "x", "M", "/hr", "/5"
+
+        var target = parseFloat(numStr);
+        if (isNaN(target) || target === 0) return;
+
+        var hasDecimal = numStr.indexOf('.') !== -1;
+        var decimalPlaces = hasDecimal ? (numStr.split('.')[1] || '').length : 0;
+        var duration = 1200;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          if (hasDecimal) {
+            current = current.toFixed(decimalPlaces);
+          } else {
+            current = Math.round(current);
           }
-          if (text.indexOf('%') !== -1) {
-            suffix = '%';
-            text = text.replace('%', '');
+          el.textContent = prefix + current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
           }
-          if (text.indexOf('x') !== -1) {
-            suffix = 'x';
-            text = text.replace('x', '');
-          }
+        }
 
-          targetNum = parseInt(text) || 0;
-          if (targetNum === 0) return;
-
-          var duration = 1200;
-          var startTime = null;
-
-          function step(timestamp) {
-            if (!startTime) startTime = timestamp;
-            var progress = Math.min((timestamp - startTime) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
-            var current = Math.round(targetNum * eased);
-            card.textContent = prefix + current + suffix;
-            if (progress < 1) {
-              requestAnimationFrame(step);
-            }
-          }
-
-          requestAnimationFrame(step);
-        });
+        requestAnimationFrame(step);
       }
     })();
   </script>

@@ -621,6 +621,7 @@
           <span class="m-inc-badge__dot"></span>
           Ranked #454 on Inc. 5000 Fastest-Growing Companies
         </div>
+        <div class="m-deco-line"></div>
         <h1 class="m-display m-display--hero wm-hero__title">
           Stop managing people<br><span class="m-text-gradient">in the dark</span>
         </h1>
@@ -1002,7 +1003,7 @@
       <div class="m-cta__inner">
         <div class="m-label m-label--light m-mb-md">See It For Yourself</div>
         <h2 class="m-display m-display--section" style="color: var(--m-white);">
-          Ready to stop managing<br>in the dark?
+          Your next 30% utilization improvement starts with a conversation
         </h2>
         <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-bottom: var(--space-2xl);">
           Mosaic is something you really have to see for yourself. Book a personalized demo and discover how AI-powered resource planning can transform your firm's profitability.
@@ -1025,6 +1026,11 @@
         <div class="m-footer__brand">
           <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic">
           <p>The first AI-powered platform built to manage your people and projects together, reducing burnout while improving profitability.</p>
+          <div class="m-footer__security">
+            <img src="../mosaicapp-staging/images/SOC_1.png" alt="SOC 2">
+            <img src="../mosaicapp-staging/images/CSA-STAR-Level1.png" alt="CSA STAR">
+            <img src="../mosaicapp-staging/images/GDPR.png" alt="GDPR">
+          </div>
         </div>
         <div>
           <div class="m-footer__col-title">Product</div>
@@ -1122,6 +1128,69 @@
       reveals.forEach(function(el) {
         observer.observe(el);
       });
+    })();
+
+    // Count-up animation for .m-stat__number elements
+    (function() {
+      var statNumbers = document.querySelectorAll('.m-stat__number');
+      if (!statNumbers.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statNumbers.forEach(function(el) { observer.observe(el); });
+
+      function animateStat(el) {
+        var raw = el.textContent.trim();
+        var prefix = '';
+        var suffix = '';
+        var remaining = raw;
+
+        // Extract leading prefix characters (+, $)
+        var prefixMatch = remaining.match(/^([+$]*)/);
+        if (prefixMatch && prefixMatch[1]) {
+          prefix = prefixMatch[1];
+          remaining = remaining.substring(prefix.length);
+        }
+
+        // Extract the numeric part (including decimals)
+        var numMatch = remaining.match(/^[\d.]+/);
+        if (!numMatch) return;
+        var numStr = numMatch[0];
+        suffix = remaining.substring(numStr.length); // e.g. "%+", "x", "M", "/hr", "/5"
+
+        var target = parseFloat(numStr);
+        if (isNaN(target) || target === 0) return;
+
+        var hasDecimal = numStr.indexOf('.') !== -1;
+        var decimalPlaces = hasDecimal ? (numStr.split('.')[1] || '').length : 0;
+        var duration = 1200;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          if (hasDecimal) {
+            current = current.toFixed(decimalPlaces);
+          } else {
+            current = Math.round(current);
+          }
+          el.textContent = prefix + current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
     })();
 
     // Animate stat numbers on scroll

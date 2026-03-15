@@ -353,6 +353,7 @@
     <div class="m-container">
       <div style="max-width: 700px; margin: 0 auto;">
         <div class="m-label m-mb-md">Pricing</div>
+        <div class="m-deco-line"></div>
         <h1 class="m-display m-display--section">The modern way to manage people and projects.<br>Get started today.</h1>
         <p class="m-body m-body--lg">Flexible plans designed to scale with your team. Start with what you need, grow when you're ready.</p>
       </div>
@@ -639,7 +640,7 @@
   <section class="m-section m-section--dark m-section--gradient m-reveal">
     <div class="m-container">
       <div class="m-cta__inner">
-        <h2 class="m-display m-display--small" style="color: var(--m-white);">Ready to run a smarter, more profitable business?</h2>
+        <h2 class="m-display m-display--small" style="color: var(--m-white);">Your team's next 30% utilization gain starts here</h2>
         <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-top: var(--space-lg); margin-bottom: var(--space-2xl);">The math is simple — optimizing staff scheduling improves profitability. See Mosaic in action.</p>
         <div class="m-cta__actions">
           <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--white m-btn--lg">Book a Demo</a>
@@ -656,6 +657,11 @@
         <div class="m-footer__brand">
           <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic">
           <p>The first AI-powered platform built to manage your people and projects together, reducing burnout while improving profitability.</p>
+          <div class="m-footer__security">
+            <img src="../mosaicapp-staging/images/SOC_1.png" alt="SOC 2">
+            <img src="../mosaicapp-staging/images/CSA-STAR-Level1.png" alt="CSA STAR">
+            <img src="../mosaicapp-staging/images/GDPR.png" alt="GDPR">
+          </div>
         </div>
         <div>
           <div class="m-footer__col-title">Product</div>
@@ -721,6 +727,36 @@
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       reveals.forEach(function(el) { observer.observe(el); });
+    })();
+    // Count-up animation for stat numbers
+    (function() {
+      var statEls = document.querySelectorAll('.m-stat__number');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          observer.unobserve(el);
+          var raw = el.textContent.trim();
+          var match = raw.match(/^([\d.]+)(.*)$/);
+          if (!match) return;
+          var target = parseFloat(match[1]);
+          var suffix = match[2];
+          var isFloat = match[1].indexOf('.') !== -1;
+          var duration = 1500;
+          var startTime = null;
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = eased * target;
+            el.textContent = (isFloat ? current.toFixed(match[1].split('.')[1].length) : Math.floor(current)) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          el.textContent = (isFloat ? (0).toFixed(match[1].split('.')[1].length) : '0') + suffix;
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.3 });
+      statEls.forEach(function(el) { observer.observe(el); });
     })();
   </script>
 </body>

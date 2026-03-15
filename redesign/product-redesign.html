@@ -356,6 +356,7 @@
     <div class="m-product-hero__bg"></div>
     <div class="m-container">
       <div class="m-label m-mb-md">Platform Overview</div>
+      <div class="m-deco-line"></div>
       <h1 class="m-display m-display--section">One platform to manage your<br><span class="m-text-gradient">people, projects, and profitability</span></h1>
       <p class="m-body m-body--lg">Mosaic replaces disconnected spreadsheets and siloed tools with a unified, AI-powered platform that gives you complete visibility into resource planning, project delivery, and financial performance.</p>
       <div class="m-cta__actions">
@@ -394,7 +395,7 @@
           <div class="m-capabilities">
             <div class="m-capability">
               <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              <span class="m-capability__text">Manage people together across every project</span>
+              <span class="m-capability__text">See who's available — and who's overloaded — in real time</span>
             </div>
             <div class="m-capability">
               <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -471,7 +472,7 @@
         <div class="m-feature__text">
           <div class="m-section-number">3</div>
           <div class="m-label">Capacity Planning</div>
-          <h2 class="m-heading m-heading--lg">Plan projects around actual capacity</h2>
+          <h2 class="m-heading m-heading--lg">Hit every deadline by planning around actual capacity</h2>
           <p class="m-body">Build project schedules around the actual capacity of your people. Understand what you can -- and can't -- get done while getting the data to right-size your organization. Never double book again.</p>
           <div class="m-capabilities">
             <div class="m-capability">
@@ -526,7 +527,7 @@
         <div class="m-feature__text">
           <div class="m-section-number">4</div>
           <div class="m-label">Workforce Intelligence</div>
-          <h2 class="m-heading m-heading--lg">Real-time data for business clarity</h2>
+          <h2 class="m-heading m-heading--lg">The insights you need before it's too late to act</h2>
           <p class="m-body">Unlike Tableau and Power BI, Mosaic offers reports and dashboards tailored to your industry's resource management needs right out of the box -- no setup or data analyst required. Anyone can understand them at first glance.</p>
           <div class="m-capabilities">
             <div class="m-capability">
@@ -632,7 +633,7 @@
         <div class="m-feature__text">
           <div class="m-section-number">6</div>
           <div class="m-label">Project Financial Controls</div>
-          <h2 class="m-heading m-heading--lg">Deliver every project on budget</h2>
+          <h2 class="m-heading m-heading--lg">Spot at-risk projects 3 weeks before they go over budget</h2>
           <p class="m-body">Keep your project and finance teams in sync with real-time project budgets directly available to project managers and executives. Accurately plan, manage, and track work so you can spot potential issues and take action before it's too late.</p>
           <div class="m-capabilities">
             <div class="m-capability">
@@ -673,7 +674,7 @@
       <div class="m-feature__header" style="max-width: 700px; margin: 0 auto var(--space-3xl);">
         <div class="m-section-number">7</div>
         <div class="m-label m-label--light" style="margin-bottom: var(--space-md);">AI, Automation & Forecasting</div>
-        <h2 class="m-display m-display--small" style="color: var(--m-white);">Optimize your workforce like never before</h2>
+        <h2 class="m-display m-display--small" style="color: var(--m-white);">Let AI handle the heavy lifting — from team assembly to forecasting</h2>
         <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-top: var(--space-lg);">Mosaic's powerful generative AI gets smarter over time, consistently improving plans, team suggestions, and forecasts based on what actually happens. Powered by the best LLMs in the industry.</p>
       </div>
 
@@ -864,6 +865,11 @@
         <div class="m-footer__brand">
           <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic">
           <p>The first AI-powered platform built to manage your people and projects together, reducing burnout while improving profitability.</p>
+          <div class="m-footer__security">
+            <img src="../mosaicapp-staging/images/SOC_1.png" alt="SOC 2">
+            <img src="../mosaicapp-staging/images/CSA-STAR-Level1.png" alt="CSA STAR">
+            <img src="../mosaicapp-staging/images/GDPR.png" alt="GDPR">
+          </div>
         </div>
         <div>
           <div class="m-footer__col-title">Product</div>
@@ -1023,6 +1029,80 @@
 
       sections.forEach(function(section) {
         scrollObserver.observe(section);
+      });
+    })();
+
+    // Count-up animation for stat numbers
+    (function() {
+      var stats = document.querySelectorAll('.m-stat__number');
+      var duration = 1600; // ms
+
+      function parseStatValue(text) {
+        text = text.trim();
+        var prefix = '';
+        var suffix = '';
+        var number = 0;
+        var decimals = 0;
+
+        // Handle formats like "4.5/5"
+        var slashMatch = text.match(/^([\d.]+)(\/\d+)$/);
+        if (slashMatch) {
+          number = parseFloat(slashMatch[1]);
+          suffix = slashMatch[2];
+          var decParts = slashMatch[1].split('.');
+          decimals = decParts.length > 1 ? decParts[1].length : 0;
+          return { number: number, decimals: decimals, prefix: prefix, suffix: suffix };
+        }
+
+        // Handle formats like "30%+", "50%", "454"
+        var match = text.match(/^([^\d]*)([\d.]+)(.*)$/);
+        if (match) {
+          prefix = match[1];
+          number = parseFloat(match[2]);
+          suffix = match[3];
+          var decParts2 = match[2].split('.');
+          decimals = decParts2.length > 1 ? decParts2[1].length : 0;
+        }
+
+        return { number: number, decimals: decimals, prefix: prefix, suffix: suffix };
+      }
+
+      function animateCount(el, parsed) {
+        var start = 0;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          // Ease-out cubic
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = eased * parsed.number;
+          el.textContent = parsed.prefix + current.toFixed(parsed.decimals) + parsed.suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = parsed.prefix + parsed.number.toFixed(parsed.decimals) + parsed.suffix;
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      var statObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var parsed = parseStatValue(el.textContent);
+            if (parsed.number > 0) {
+              animateCount(el, parsed);
+            }
+            statObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      stats.forEach(function(el) {
+        statObserver.observe(el);
       });
     })();
   </script>

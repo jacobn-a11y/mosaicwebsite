@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Customer Stories — Mosaic Resource Planning Success</title>
+  <meta content="Discover how leading engineering, architecture, and professional services firms transform resource planning with Mosaic. Real results from real teams." name="description">
+  <meta content="Customer Stories — Mosaic Resource Planning Success" property="og:title">
+  <meta content="Discover how leading engineering, architecture, and professional services firms transform resource planning with Mosaic. Real results from real teams." property="og:description">
+  <meta content="https://uploads-ssl.webflow.com/60b7d9f08337276663c17190/62bf427a7345a99671746b36_OG%20Image-min.png" property="og:image">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link href="https://www.mosaicapp.com/casestudies" rel="canonical">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/redesign.css" rel="stylesheet">
+  <style>
+    /* ===== Customer Stories Page Styles ===== */
+
+    /* Hero — editorial centered layout */
+    .cs-hero {
+      padding-top: calc(var(--nav-height) + var(--space-5xl));
+      padding-bottom: var(--space-4xl);
+      position: relative;
+      overflow: hidden;
+      background: var(--m-midnight);
+      text-align: center;
+    }
+
+    .cs-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(42, 91, 215, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(56, 217, 197, 0.08) 0%, transparent 50%);
+    }
+
+    .cs-hero__bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+    }
+
+    .cs-hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cs-hero__title {
+      color: var(--m-white);
+      margin-bottom: var(--space-lg);
+    }
+
+    .cs-hero__description {
+      color: var(--m-gray-200);
+      margin-bottom: var(--space-2xl);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Aggregate stats bar */
+    .cs-proof-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      max-width: 900px;
+      margin: var(--space-3xl) auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cs-proof-bar__item {
+      text-align: center;
+      padding: var(--space-lg) var(--space-md);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cs-proof-bar__number {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+      background: linear-gradient(135deg, var(--m-blue-light), var(--m-cyan-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cs-proof-bar__label {
+      font-size: var(--text-xs);
+      color: var(--m-gray-300);
+      font-weight: 500;
+    }
+
+    /* Featured case study — large editorial card */
+    .cs-featured {
+      background: var(--m-off-white);
+    }
+
+    .cs-featured__card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4xl);
+      align-items: center;
+      background: var(--m-white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--m-ghost);
+      padding: var(--space-3xl);
+      box-shadow: 0 24px 48px rgba(13, 27, 62, 0.06);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .cs-featured__card:hover {
+      box-shadow: 0 32px 64px rgba(13, 27, 62, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .cs-featured__logo {
+      height: 32px;
+      width: auto;
+      margin-bottom: var(--space-xl);
+      opacity: 0.85;
+    }
+
+    .cs-featured__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(42, 91, 215, 0.08);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--m-blue);
+      margin-bottom: var(--space-lg);
+    }
+
+    .cs-featured__title {
+      margin-bottom: var(--space-lg);
+    }
+
+    .cs-featured__desc {
+      margin-bottom: var(--space-xl);
+    }
+
+    .cs-featured__metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--m-ghost);
+    }
+
+    .cs-featured__metric-value {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--m-blue);
+      margin-bottom: 2px;
+    }
+
+    .cs-featured__metric-label {
+      font-size: var(--text-xs);
+      color: var(--m-gray-300);
+      font-weight: 500;
+    }
+
+    .cs-featured__visual {
+      position: relative;
+    }
+
+    .cs-featured__quote-card {
+      background: var(--m-off-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      border: 1px solid var(--m-ghost);
+      position: relative;
+    }
+
+    .cs-featured__quote-mark {
+      font-size: var(--text-4xl);
+      color: var(--m-blue);
+      line-height: 0.5;
+      margin-bottom: var(--space-md);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+
+    .cs-featured__quote-text {
+      font-size: var(--text-md);
+      line-height: 1.7;
+      color: var(--m-text);
+      font-style: italic;
+      margin-bottom: var(--space-lg);
+    }
+
+    .cs-featured__quote-author {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--m-text);
+    }
+
+    .cs-featured__quote-role {
+      font-size: var(--text-xs);
+      color: var(--m-gray-300);
+    }
+
+    /* Case study card grid */
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .cs-card {
+      background: var(--m-white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--m-ghost);
+      padding: var(--space-2xl);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--duration-base) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--m-blue), var(--m-cyan));
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+
+    .cs-card:hover {
+      border-color: var(--m-blue-light);
+      box-shadow: 0 12px 40px rgba(42, 91, 215, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .cs-card:hover::before {
+      opacity: 1;
+    }
+
+    .cs-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--m-ghost);
+    }
+
+    .cs-card__logo {
+      height: 24px;
+      width: auto;
+      opacity: 0.8;
+    }
+
+    .cs-card__industry {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--m-gray-300);
+      padding: 3px 10px;
+      background: var(--m-off-white);
+      border-radius: var(--radius-full);
+    }
+
+    .cs-card__title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--m-text);
+      line-height: 1.3;
+      margin-bottom: var(--space-md);
+    }
+
+    .cs-card__desc {
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--m-text-secondary);
+      margin-bottom: var(--space-xl);
+      flex-grow: 1;
+    }
+
+    .cs-card__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      padding: var(--space-md);
+      background: var(--m-off-white);
+      border-radius: var(--radius-md);
+    }
+
+    .cs-card__stat-value {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--m-blue);
+      letter-spacing: -0.02em;
+    }
+
+    .cs-card__stat-label {
+      font-size: 11px;
+      color: var(--m-gray-300);
+      font-weight: 500;
+    }
+
+    .cs-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--m-blue);
+      transition: gap var(--duration-fast) ease;
+    }
+
+    .cs-card__link:hover {
+      gap: 10px;
+    }
+
+    /* Big testimonial section */
+    .cs-testimonial-hero {
+      background: var(--m-midnight);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-testimonial-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(42, 91, 215, 0.12) 0%, transparent 60%);
+    }
+
+    .cs-testimonial-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cs-testimonial-hero__mark {
+      font-size: 96px;
+      color: var(--m-blue);
+      opacity: 0.4;
+      font-family: Georgia, serif;
+      line-height: 0.5;
+      margin-bottom: var(--space-xl);
+    }
+
+    .cs-testimonial-hero__quote {
+      font-size: var(--text-3xl);
+      font-weight: 500;
+      color: var(--m-white);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .cs-testimonial-hero__author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    .cs-testimonial-hero__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--m-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--m-white);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .cs-testimonial-hero__name {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--m-white);
+    }
+
+    .cs-testimonial-hero__role {
+      font-size: var(--text-sm);
+      color: var(--m-gray-300);
+    }
+
+    .cs-testimonial-hero__logo {
+      height: 24px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.6;
+      margin-left: var(--space-lg);
+      padding-left: var(--space-lg);
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Testimonial strip */
+    .cs-quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .cs-quote-card {
+      padding: var(--space-2xl);
+      border-radius: var(--radius-lg);
+      background: var(--m-white);
+      border: 1px solid var(--m-ghost);
+      display: flex;
+      flex-direction: column;
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .cs-quote-card:hover {
+      border-color: var(--m-blue-light);
+      box-shadow: 0 8px 32px rgba(42, 91, 215, 0.06);
+    }
+
+    .cs-quote-card__logo {
+      height: 22px;
+      width: auto;
+      opacity: 0.6;
+      margin-bottom: var(--space-lg);
+    }
+
+    .cs-quote-card__text {
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--m-text);
+      margin-bottom: var(--space-xl);
+      flex-grow: 1;
+      font-style: italic;
+    }
+
+    .cs-quote-card__text::before {
+      content: '\201C';
+      font-size: var(--text-3xl);
+      color: var(--m-blue);
+      line-height: 0;
+      position: relative;
+      top: 12px;
+      margin-right: 4px;
+    }
+
+    .cs-quote-card__author-name {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--m-text);
+    }
+
+    .cs-quote-card__author-role {
+      font-size: var(--text-xs);
+      color: var(--m-gray-300);
+    }
+
+    /* Logo trust strip on dark bg */
+    .cs-trust-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-3xl);
+      padding: var(--space-xl) 0;
+    }
+
+    .cs-trust-logos img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.4;
+      transition: opacity var(--duration-base) ease;
+    }
+
+    .cs-trust-logos img:hover {
+      opacity: 0.8;
+    }
+
+    /* Industry filter pills (decorative) */
+    .cs-filters {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-3xl);
+      flex-wrap: wrap;
+    }
+
+    .cs-filter-pill {
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      border: 1px solid var(--m-ghost);
+      color: var(--m-gray-400);
+      background: var(--m-white);
+      cursor: pointer;
+      transition: all var(--duration-fast) ease;
+    }
+
+    .cs-filter-pill:hover {
+      border-color: var(--m-blue);
+      color: var(--m-blue);
+    }
+
+    .cs-filter-pill--active {
+      background: var(--m-blue);
+      color: var(--m-white);
+      border-color: var(--m-blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .cs-featured__card {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+
+      .cs-grid,
+      .cs-quotes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-proof-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cs-featured__metrics {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cs-hero {
+        padding-top: calc(var(--nav-height) + var(--space-3xl));
+        padding-bottom: var(--space-3xl);
+      }
+
+      .cs-proof-bar {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+      }
+
+      .cs-featured__card {
+        padding: var(--space-xl);
+      }
+
+      .cs-featured__metrics {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+
+      .cs-testimonial-hero__quote {
+        font-size: var(--text-2xl);
+      }
+
+      .cs-testimonial-hero__author {
+        flex-direction: column;
+        gap: var(--space-sm);
+      }
+
+      .cs-testimonial-hero__logo {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+      }
+
+      .cs-trust-logos {
+        gap: var(--space-xl);
+      }
+
+      .cs-trust-logos img {
+        height: 22px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Customer Stories",
+    "description": "Discover how leading firms transform resource planning with Mosaic.",
+    "url": "https://www.mosaicapp.com/casestudies",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mosaic"
+    }
+  }
+  </script>
+</head>
+<body class="redesign">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="m-nav" id="mainNav">
+    <div class="m-nav__inner">
+      <a href="index.html" class="m-nav__logo">
+        <img src="images/Mosaic-logo-for-email.png" alt="Mosaic" height="28">
+      </a>
+
+      <ul class="m-nav__links">
+        <li class="m-dropdown">
+          <span class="m-nav__link m-nav__link--dropdown">Product</span>
+          <div class="m-dropdown__menu">
+            <a href="product/resource-planning.html" class="m-dropdown__item">
+              <img src="images/Frame-1119.svg" alt=""> Resource Planning
+            </a>
+            <a href="product/resource-allocation.html" class="m-dropdown__item">
+              <img src="images/Mediamodifier-Design.svg" alt=""> Resource Allocation
+            </a>
+            <a href="product/capacity-planning.html" class="m-dropdown__item">
+              <img src="images/schedule-icon-white.png" alt=""> Capacity Planning
+            </a>
+            <a href="product/workforce-intelligence.html" class="m-dropdown__item">
+              <img src="images/Frame-1120.svg" alt=""> Workforce Intelligence
+            </a>
+            <a href="product/project-planning.html" class="m-dropdown__item">
+              <img src="images/Frame-1122-1.svg" alt=""> Project Planning
+            </a>
+            <a href="product/project-financial-controls.html" class="m-dropdown__item">
+              <img src="images/Frame-1123.svg" alt=""> Financial Controls
+            </a>
+            <a href="product/ai-automation-forecasting.html" class="m-dropdown__item">
+              <img src="images/settings.svg" alt=""> AI & Forecasting
+            </a>
+            <a href="integrations.html" class="m-dropdown__item">
+              <img src="images/icons8-software-60.svg" alt=""> Integrations
+            </a>
+          </div>
+        </li>
+        <li><a href="why-mosaic.html" class="m-nav__link">Why Mosaic?</a></li>
+        <li><a href="mosaic-pricing.html" class="m-nav__link">Pricing</a></li>
+        <li class="m-dropdown">
+          <span class="m-nav__link m-nav__link--dropdown">Resources</span>
+          <div class="m-dropdown__menu">
+            <a href="roi-with-strategic-resource-planning.html" class="m-dropdown__item">ROI Calculator</a>
+            <a href="casestudies.html" class="m-dropdown__item">Customer Stories</a>
+            <a href="blog.html" class="m-dropdown__item">Blog</a>
+            <a href="glossary.html" class="m-dropdown__item">Glossary</a>
+            <a href="events-webinars.html" class="m-dropdown__item">Events & Webinars</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="m-nav__actions">
+        <a href="https://login.mosaicapp.com/login" class="m-nav__signin">Sign In</a>
+        <a href="book-a-demo.html" class="m-btn m-btn--primary m-btn--sm">Book Demo</a>
+      </div>
+
+      <div class="m-nav__mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <section class="cs-hero">
+    <div class="cs-hero__bg"></div>
+    <div class="cs-hero__bg-grid"></div>
+    <div class="m-container">
+      <div class="cs-hero__content m-reveal">
+        <div class="m-label m-label--light m-mb-md">Customer Stories</div>
+        <h1 class="m-display m-display--hero cs-hero__title">
+          Real teams. <span class="m-text-gradient">Measurable results.</span>
+        </h1>
+        <p class="m-body m-body--lg cs-hero__description">
+          See how leading engineering, architecture, and professional services firms use Mosaic to unlock hidden revenue, reduce burnout, and plan with confidence.
+        </p>
+        <a href="#stories" class="m-btn m-btn--white">
+          Explore Stories
+          <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <!-- Aggregate proof bar -->
+      <div class="cs-proof-bar m-reveal m-reveal--delay-2">
+        <div class="cs-proof-bar__item">
+          <div class="cs-proof-bar__number">41x</div>
+          <div class="cs-proof-bar__label">Average ROI</div>
+        </div>
+        <div class="cs-proof-bar__item">
+          <div class="cs-proof-bar__number">30%+</div>
+          <div class="cs-proof-bar__label">Utilization Improvement</div>
+        </div>
+        <div class="cs-proof-bar__item">
+          <div class="cs-proof-bar__number">50%</div>
+          <div class="cs-proof-bar__label">Less Time on Admin</div>
+        </div>
+        <div class="cs-proof-bar__item">
+          <div class="cs-proof-bar__number">4.5/5</div>
+          <div class="cs-proof-bar__label">Customer Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TRUST LOGOS ====== -->
+  <section class="m-section m-section--dark m-section--compact m-reveal">
+    <div class="m-container">
+      <p class="m-body--sm m-text-center m-mb-xl" style="color: var(--m-gray-300);">Trusted by firms that take resource planning seriously</p>
+      <div class="cs-trust-logos">
+        <img src="images/black-cpl.png" alt="CPL">
+        <img src="images/me-engineers-black.png" alt="ME Engineers">
+        <img src="images/black-ceso.png" alt="CESO">
+        <img src="images/black-kpff.png" alt="KPFF">
+        <img src="images/TYLin.png" alt="TYLin">
+        <img src="images/black-dynamic-risk.png" alt="Dynamic Risk">
+        <img src="images/black-stanley-consult.png" alt="Stanley Consultants">
+        <img src="images/black-silman.png" alt="Silman">
+        <img src="images/assistRx-black.png" alt="AssistRx">
+        <img src="images/cetra-logo.png" alt="Cetra">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURED CASE STUDY: CESO ====== -->
+  <section class="m-section cs-featured m-reveal" id="stories">
+    <div class="m-container">
+      <div class="m-text-center m-mb-3xl">
+        <div class="m-label m-mb-md">Featured Story</div>
+        <h2 class="m-display m-display--small">From spreadsheet chaos to planning confidence</h2>
+      </div>
+
+      <div class="cs-featured__card">
+        <div class="cs-featured__text">
+          <img src="images/black-ceso.png" alt="CESO" class="cs-featured__logo">
+          <div class="cs-featured__eyebrow">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 1v10M1 6h10"/></svg>
+            Engineering & Architecture
+          </div>
+          <h3 class="m-heading m-heading--lg cs-featured__title">CESO achieved 41-43x ROI and $12.3M projected annual revenue gain with Mosaic</h3>
+          <p class="m-body cs-featured__desc">A 550+ employee engineering firm across 16 offices replaced disconnected spreadsheets with Mosaic, starting with a 68-person pilot that delivered immediate, measurable results.</p>
+          <div class="cs-featured__metrics">
+            <div>
+              <div class="cs-featured__metric-value">41-43x</div>
+              <div class="cs-featured__metric-label">Return on Investment</div>
+            </div>
+            <div>
+              <div class="cs-featured__metric-value">+$1.64M</div>
+              <div class="cs-featured__metric-label">Revenue Gain (Pilot)</div>
+            </div>
+            <div>
+              <div class="cs-featured__metric-value">87.4%</div>
+              <div class="cs-featured__metric-label">Utilization Achieved</div>
+            </div>
+          </div>
+          <a href="customer-stories-ceso.html" class="m-btn m-btn--primary">
+            Read Full Story
+            <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <div class="cs-featured__visual">
+          <div class="cs-featured__quote-card">
+            <div class="cs-featured__quote-mark">"</div>
+            <p class="cs-featured__quote-text">Having real capacity data at our fingertips changed how we make decisions. We went from guessing about availability to knowing exactly where our people are and where they should be.</p>
+            <div class="cs-featured__quote-author">Zachary Freshner</div>
+            <div class="cs-featured__quote-role">Director of Resource Management, CESO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BIG TESTIMONIAL ====== -->
+  <section class="m-section cs-testimonial-hero m-reveal">
+    <div class="cs-testimonial-hero__bg"></div>
+    <div class="m-container">
+      <div class="cs-testimonial-hero__inner">
+        <div class="cs-testimonial-hero__mark">"</div>
+        <p class="cs-testimonial-hero__quote">Mosaic has been a game changer for our resource management. We can now see in real time who is available and where we have gaps.</p>
+        <div class="cs-testimonial-hero__author">
+          <div class="cs-testimonial-hero__avatar">ME</div>
+          <div style="text-align: left;">
+            <div class="cs-testimonial-hero__name">Director of Operations</div>
+            <div class="cs-testimonial-hero__role">ME Engineers</div>
+          </div>
+          <img src="images/me-engineers-black.png" alt="ME Engineers" class="cs-testimonial-hero__logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CASE STUDY GRID ====== -->
+  <section class="m-section m-reveal" id="all-stories">
+    <div class="m-container">
+      <div class="m-text-center m-mb-2xl">
+        <div class="m-label m-mb-md">All Customer Stories</div>
+        <h2 class="m-display m-display--small">Teams that plan smarter with Mosaic</h2>
+      </div>
+
+      <!-- Industry filters -->
+      <div class="cs-filters">
+        <span class="cs-filter-pill cs-filter-pill--active">All Industries</span>
+        <span class="cs-filter-pill">Engineering</span>
+        <span class="cs-filter-pill">Architecture</span>
+        <span class="cs-filter-pill">Professional Services</span>
+        <span class="cs-filter-pill">Healthcare</span>
+      </div>
+
+      <div class="cs-grid">
+        <!-- Card: CPL -->
+        <div class="cs-card m-reveal">
+          <div class="cs-card__header">
+            <img src="images/black-cpl.png" alt="CPL" class="cs-card__logo">
+            <span class="cs-card__industry">Engineering</span>
+          </div>
+          <h3 class="cs-card__title">Unified resource visibility across a multi-office engineering practice</h3>
+          <p class="cs-card__desc">CPL eliminated siloed spreadsheets and gained cross-office resource visibility, enabling better staffing decisions and improved project delivery timelines.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">30%+</div>
+              <div class="cs-card__stat-label">Better Utilization</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">50%</div>
+              <div class="cs-card__stat-label">Less Admin Time</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: KPFF -->
+        <div class="cs-card m-reveal m-reveal--delay-1">
+          <div class="cs-card__header">
+            <img src="images/black-kpff.png" alt="KPFF" class="cs-card__logo">
+            <span class="cs-card__industry">Engineering</span>
+          </div>
+          <h3 class="cs-card__title">Data-driven staffing decisions across a national structural practice</h3>
+          <p class="cs-card__desc">KPFF replaced gut-feel staffing with real-time data, giving managers the ability to balance workloads and proactively plan for upcoming projects.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">15%</div>
+              <div class="cs-card__stat-label">Utilization Gain</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Real-time</div>
+              <div class="cs-card__stat-label">Workload Visibility</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: TYLin -->
+        <div class="cs-card m-reveal m-reveal--delay-2">
+          <div class="cs-card__header">
+            <img src="images/TYLin.png" alt="TYLin" class="cs-card__logo">
+            <span class="cs-card__industry">Engineering</span>
+          </div>
+          <h3 class="cs-card__title">Scaling resource planning across a global infrastructure firm</h3>
+          <p class="cs-card__desc">TYLin unified its global teams under a single resource planning platform, driving better collaboration and more predictable project outcomes at scale.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">Global</div>
+              <div class="cs-card__stat-label">Unified Planning</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Predictable</div>
+              <div class="cs-card__stat-label">Project Outcomes</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Stanley Consultants -->
+        <div class="cs-card m-reveal">
+          <div class="cs-card__header">
+            <img src="images/black-stanley-consult.png" alt="Stanley Consultants" class="cs-card__logo">
+            <span class="cs-card__industry">Engineering</span>
+          </div>
+          <h3 class="cs-card__title">Boosting utilization 15% with real-time resource intelligence</h3>
+          <p class="cs-card__desc">Stanley Consultants moved from flying blind to data-backed decisions, achieving a 15%+ utilization increase with clear evidence behind every staffing choice.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">15%+</div>
+              <div class="cs-card__stat-label">Utilization Increase</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Data-backed</div>
+              <div class="cs-card__stat-label">Staffing Decisions</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Dynamic Risk -->
+        <div class="cs-card m-reveal m-reveal--delay-1">
+          <div class="cs-card__header">
+            <img src="images/black-dynamic-risk.png" alt="Dynamic Risk" class="cs-card__logo">
+            <span class="cs-card__industry">Professional Services</span>
+          </div>
+          <h3 class="cs-card__title">AI-powered forecasting eliminated last-minute staffing scrambles</h3>
+          <p class="cs-card__desc">Dynamic Risk leveraged Mosaic's AI forecasting to plan hiring months in advance, eliminating the costly scramble of reactive staffing and reducing burnout.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">Months</div>
+              <div class="cs-card__stat-label">Advance Planning</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Zero</div>
+              <div class="cs-card__stat-label">Last-Minute Scrambles</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Silman -->
+        <div class="cs-card m-reveal m-reveal--delay-2">
+          <div class="cs-card__header">
+            <img src="images/black-silman.png" alt="Silman" class="cs-card__logo">
+            <span class="cs-card__industry">Architecture</span>
+          </div>
+          <h3 class="cs-card__title">Optimizing workload balance across a structural engineering firm</h3>
+          <p class="cs-card__desc">Silman gained heatmap-level visibility into team workloads, enabling leadership to balance assignments equitably and prevent the burnout that was costing them talent.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">Balanced</div>
+              <div class="cs-card__stat-label">Team Workloads</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Reduced</div>
+              <div class="cs-card__stat-label">Employee Burnout</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: AssistRx -->
+        <div class="cs-card m-reveal">
+          <div class="cs-card__header">
+            <img src="images/assistRx-black.png" alt="AssistRx" class="cs-card__logo">
+            <span class="cs-card__industry">Healthcare</span>
+          </div>
+          <h3 class="cs-card__title">Streamlined resource allocation across healthcare technology teams</h3>
+          <p class="cs-card__desc">AssistRx brought clarity to a complex, multi-project environment, reducing overallocation and giving project managers instant visibility into team capacity.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">Instant</div>
+              <div class="cs-card__stat-label">Capacity Visibility</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Fewer</div>
+              <div class="cs-card__stat-label">Overallocation Issues</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: Cetra -->
+        <div class="cs-card m-reveal m-reveal--delay-1">
+          <div class="cs-card__header">
+            <img src="images/cetra-logo.png" alt="Cetra" class="cs-card__logo">
+            <span class="cs-card__industry">Architecture</span>
+          </div>
+          <h3 class="cs-card__title">Replacing spreadsheets with automated resource planning</h3>
+          <p class="cs-card__desc">Cetra replaced hours of weekly spreadsheet management with Mosaic's automated workflows, freeing leadership to focus on strategic decisions instead of data entry.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">Hours</div>
+              <div class="cs-card__stat-label">Saved Weekly</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Automated</div>
+              <div class="cs-card__stat-label">Resource Workflows</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Card: ME Engineers -->
+        <div class="cs-card m-reveal m-reveal--delay-2">
+          <div class="cs-card__header">
+            <img src="images/me-engineers-black.png" alt="ME Engineers" class="cs-card__logo">
+            <span class="cs-card__industry">Engineering</span>
+          </div>
+          <h3 class="cs-card__title">Real-time visibility transformed how this MEP firm staffs projects</h3>
+          <p class="cs-card__desc">ME Engineers gained instant visibility into availability and gaps, transforming their resource management from reactive firefighting to proactive planning.</p>
+          <div class="cs-card__stats">
+            <div>
+              <div class="cs-card__stat-value">Real-time</div>
+              <div class="cs-card__stat-label">Resource Visibility</div>
+            </div>
+            <div>
+              <div class="cs-card__stat-value">Proactive</div>
+              <div class="cs-card__stat-label">Staffing Approach</div>
+            </div>
+          </div>
+          <a href="#" class="cs-card__link">
+            Read Story
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIAL QUOTES STRIP ====== -->
+  <section class="m-section m-section--ghost m-reveal">
+    <div class="m-container">
+      <div class="m-text-center m-mb-3xl">
+        <div class="m-label m-mb-md">In Their Words</div>
+        <h2 class="m-display m-display--small">What our customers say</h2>
+      </div>
+      <div class="cs-quotes-grid">
+        <div class="cs-quote-card m-reveal">
+          <img src="images/black-stanley-consult.png" alt="Stanley Consultants" class="cs-quote-card__logo">
+          <p class="cs-quote-card__text">Before Mosaic, we were flying blind. Now our utilization is up over 15% and we have data to back every staffing decision.</p>
+          <div>
+            <div class="cs-quote-card__author-name">VP of Resources</div>
+            <div class="cs-quote-card__author-role">Stanley Consultants</div>
+          </div>
+        </div>
+
+        <div class="cs-quote-card m-reveal m-reveal--delay-1">
+          <img src="images/black-dynamic-risk.png" alt="Dynamic Risk" class="cs-quote-card__logo">
+          <p class="cs-quote-card__text">The AI forecasting capabilities let us plan hiring months in advance. We've eliminated the scramble of last-minute staffing.</p>
+          <div>
+            <div class="cs-quote-card__author-name">Resource Manager</div>
+            <div class="cs-quote-card__author-role">Dynamic Risk</div>
+          </div>
+        </div>
+
+        <div class="cs-quote-card m-reveal m-reveal--delay-2">
+          <img src="images/black-ceso.png" alt="CESO" class="cs-quote-card__logo">
+          <p class="cs-quote-card__text">We needed something that could give us visibility across all 16 offices without requiring everyone to change how they work. Mosaic understood that from day one.</p>
+          <div>
+            <div class="cs-quote-card__author-name">Zachary Freshner</div>
+            <div class="cs-quote-card__author-role">Director of Resource Management, CESO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RESULTS STATS SECTION ====== -->
+  <section class="m-section m-section--dark m-section--compact m-reveal">
+    <div class="m-container">
+      <div class="m-text-center m-mb-3xl">
+        <div class="m-label m-label--light m-mb-md">By the Numbers</div>
+        <h2 class="m-display m-display--small" style="color: var(--m-white);">The impact speaks for itself</h2>
+      </div>
+      <div class="m-stats">
+        <div class="m-stat">
+          <div class="m-stat__number">$12.3M</div>
+          <div class="m-stat__label">Projected Revenue Gain (CESO)</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">+5.4%</div>
+          <div class="m-stat__label">Utilization Improvement</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">61</div>
+          <div class="m-stat__label">Additional Billable Hours / Person</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">$26/hr</div>
+          <div class="m-stat__label">Effective Bill Rate Increase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FINAL CTA ====== -->
+  <section class="m-section m-section--dark m-section--gradient m-reveal">
+    <div class="m-container">
+      <div class="m-cta__inner">
+        <div class="m-label m-label--light m-mb-md">Your Story Starts Here</div>
+        <h2 class="m-display m-display--section" style="color: var(--m-white);">Ready to unlock your firm's hidden revenue?</h2>
+        <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-bottom: var(--space-2xl);">
+          See how Mosaic can transform your resource planning, just like it did for CESO, ME Engineers, Stanley Consultants, and dozens more.
+        </p>
+        <div class="m-cta__actions">
+          <a href="book-a-demo.html" class="m-btn m-btn--white m-btn--lg">
+            Book a Demo
+            <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="roi-with-strategic-resource-planning.html" class="m-btn m-btn--ghost">Calculate Your ROI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="m-footer">
+    <div class="m-container">
+      <div class="m-footer__top">
+        <div class="m-footer__brand">
+          <img src="images/Mosaic-logo-for-email.png" alt="Mosaic">
+          <p>The first AI-powered platform built to manage your people and projects together, reducing burnout while improving profitability.</p>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Product</div>
+          <ul class="m-footer__links">
+            <li><a href="product/resource-planning.html" class="m-footer__link">Resource Planning</a></li>
+            <li><a href="product/resource-allocation.html" class="m-footer__link">Resource Allocation</a></li>
+            <li><a href="product/capacity-planning.html" class="m-footer__link">Capacity Planning</a></li>
+            <li><a href="product/workforce-intelligence.html" class="m-footer__link">Workforce Intelligence</a></li>
+            <li><a href="product/project-planning.html" class="m-footer__link">Project Planning</a></li>
+            <li><a href="product/ai-automation-forecasting.html" class="m-footer__link">AI & Forecasting</a></li>
+            <li><a href="integrations.html" class="m-footer__link">Integrations</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Resources</div>
+          <ul class="m-footer__links">
+            <li><a href="blog.html" class="m-footer__link">Blog</a></li>
+            <li><a href="casestudies.html" class="m-footer__link">Customer Stories</a></li>
+            <li><a href="glossary.html" class="m-footer__link">Glossary</a></li>
+            <li><a href="events-webinars.html" class="m-footer__link">Events & Webinars</a></li>
+            <li><a href="recordings-downloads.html" class="m-footer__link">Downloads</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Company</div>
+          <ul class="m-footer__links">
+            <li><a href="why-mosaic.html" class="m-footer__link">Why Mosaic?</a></li>
+            <li><a href="mosaic-pricing.html" class="m-footer__link">Pricing</a></li>
+            <li><a href="mission.html" class="m-footer__link">Mission</a></li>
+            <li><a href="partners.html" class="m-footer__link">Partners</a></li>
+            <li><a href="book-a-demo.html" class="m-footer__link">Book a Demo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="m-footer__bottom">
+        <div class="m-footer__legal">&copy; 2026 Mosaic. All rights reserved.</div>
+        <div class="m-footer__legal-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="cookies.html">Cookie Policy</a>
+          <a href="dpa.html">DPA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    // Scroll-direction-aware navigation
+    (function() {
+      const nav = document.getElementById('mainNav');
+      let lastScroll = 0;
+      let ticking = false;
+
+      function updateNav() {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 80) {
+          nav.classList.add('m-nav--scrolled');
+        } else {
+          nav.classList.remove('m-nav--scrolled');
+        }
+
+        if (currentScroll > lastScroll && currentScroll > 300) {
+          nav.classList.add('m-nav--hidden');
+        } else {
+          nav.classList.remove('m-nav--hidden');
+        }
+
+        lastScroll = currentScroll;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(updateNav);
+          ticking = true;
+        }
+      });
+    })();
+
+    // Scroll reveal with staggered animations
+    (function() {
+      const reveals = document.querySelectorAll('.m-reveal');
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('m-reveal--visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Industry filter pills (interactive)
+    (function() {
+      const pills = document.querySelectorAll('.cs-filter-pill');
+      pills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          pills.forEach(function(p) { p.classList.remove('cs-filter-pill--active'); });
+          pill.classList.add('cs-filter-pill--active');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

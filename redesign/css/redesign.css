@@ -1536,6 +1536,159 @@ a {
   opacity: 0.2;
 }
 
+/* ---------- Signature Mosaic Tile Pattern ---------- */
+.m-mosaic-pattern {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.m-mosaic-pattern--hero {
+  top: 10%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  opacity: 0.04;
+  background:
+    linear-gradient(135deg, var(--m-blue) 25%, transparent 25%) -20px 0,
+    linear-gradient(225deg, var(--m-cyan) 25%, transparent 25%) -20px 0,
+    linear-gradient(315deg, var(--m-blue) 25%, transparent 25%),
+    linear-gradient(45deg, var(--m-cyan) 25%, transparent 25%);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  animation: mosaicFloat 20s ease-in-out infinite alternate;
+}
+
+.m-mosaic-pattern--footer {
+  bottom: 5%;
+  left: -3%;
+  width: 200px;
+  height: 200px;
+  opacity: 0.03;
+  background:
+    linear-gradient(135deg, var(--m-blue-light) 25%, transparent 25%) -15px 0,
+    linear-gradient(225deg, var(--m-cyan-soft) 25%, transparent 25%) -15px 0,
+    linear-gradient(315deg, var(--m-blue-light) 25%, transparent 25%),
+    linear-gradient(45deg, var(--m-cyan-soft) 25%, transparent 25%);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.m-mosaic-pattern--section {
+  opacity: 0.025;
+  width: 250px;
+  height: 250px;
+  background:
+    linear-gradient(135deg, var(--m-blue) 25%, transparent 25%) -15px 0,
+    linear-gradient(225deg, var(--m-blue) 25%, transparent 25%) -15px 0,
+    linear-gradient(315deg, var(--m-blue) 25%, transparent 25%),
+    linear-gradient(45deg, var(--m-blue) 25%, transparent 25%);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+@keyframes mosaicFloat {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-10px, 10px) rotate(3deg); }
+}
+
+/* ---------- Bento Grid Layout (alternative to split) ---------- */
+.m-bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-lg);
+}
+
+.m-bento__hero {
+  grid-column: 1 / -1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(13, 27, 62, 0.08);
+}
+
+.m-bento__hero img {
+  width: 100%;
+  display: block;
+}
+
+.m-bento__card {
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--m-ghost);
+  background: var(--m-white);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.m-bento__card:hover {
+  border-color: var(--m-blue-light);
+  box-shadow: 0 8px 24px rgba(42, 91, 215, 0.06);
+  transform: translateY(-2px);
+}
+
+.m-bento__card-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--m-text);
+  margin-bottom: var(--space-sm);
+}
+
+.m-bento__card-desc {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--m-text-secondary);
+}
+
+/* Inline testimonial (for mid-page social proof) */
+.m-inline-quote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-2xl);
+}
+
+.m-inline-quote__mark {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--m-blue);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.m-inline-quote__text {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--m-text);
+  font-style: italic;
+}
+
+.m-inline-quote__author {
+  margin-top: var(--space-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--m-gray-400);
+  font-style: normal;
+}
+
+@media (max-width: 1024px) {
+  .m-bento {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .m-inline-quote {
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+  }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   :root {

@@ -352,8 +352,9 @@
   </nav>
 
   <!-- ====== PRODUCT HERO ====== -->
-  <section class="m-product-hero" style="position: relative;">
+  <section class="m-product-hero" style="position: relative; overflow: hidden;">
     <div class="m-product-hero__bg"></div>
+    <div class="m-mosaic-pattern m-mosaic-pattern--hero" style="top: 20%; left: -3%;"></div>
     <div class="m-container">
       <svg class="m-deco-mosaic" width="120" height="120" viewBox="0 0 120 120" fill="none" style="position: absolute; bottom: -20px; left: -30px; opacity: 0.08;">
         <rect x="0" y="0" width="35" height="35" rx="4" fill="#2a5bd7"/>
@@ -527,6 +528,19 @@
       </div>
       <div class="m-product-showcase">
         <img src="../mosaicapp-staging/images/Workload_heatmap-min.png" alt="Mosaic workload heatmap showing team utilization across the organization" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== INLINE TESTIMONIAL ====== -->
+  <section class="m-section m-section--compact m-reveal" style="padding: var(--space-3xl) 0;">
+    <div class="m-container">
+      <div class="m-inline-quote">
+        <div class="m-inline-quote__mark">"</div>
+        <div>
+          <p class="m-inline-quote__text">Before Mosaic, we were flying blind. Now our utilization is up over 15% and we have data to back every staffing decision.</p>
+          <p class="m-inline-quote__author">— VP of Resources, Stanley Consultants</p>
+        </div>
       </div>
     </div>
   </section>

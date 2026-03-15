@@ -18,73 +18,277 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="css/redesign.css" rel="stylesheet">
   <style>
-    /* ===== Product page-specific overrides ===== */
+    /* ===== Product page-specific styles ===== */
 
-    /* Bullet list within feature text */
-    .m-feature__list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 var(--space-xl);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    /* Hero — compact product hero */
+    .m-product-hero {
+      padding-top: calc(var(--nav-height) + var(--space-5xl));
+      padding-bottom: var(--space-4xl);
+      text-align: center;
+      background: linear-gradient(180deg, var(--m-white) 0%, var(--m-off-white) 100%);
+      position: relative;
+      overflow: hidden;
     }
-    .m-feature__list li {
+
+    .m-product-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(42, 91, 215, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42, 91, 215, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+    }
+
+    .m-product-hero .m-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .m-product-hero .m-display {
+      margin-bottom: var(--space-lg);
+    }
+
+    .m-product-hero .m-body {
+      max-width: 640px;
+      margin: 0 auto var(--space-2xl);
+    }
+
+    /* Tab navigation */
+    .m-tabs {
+      position: sticky;
+      top: var(--nav-height);
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--m-ghost);
+      transition: box-shadow var(--duration-base) ease;
+    }
+
+    .m-tabs.has-shadow {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .m-tabs__inner {
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+    }
+
+    .m-tabs__inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .m-tab {
+      flex-shrink: 0;
+      padding: var(--space-md) var(--space-lg);
       font-size: var(--text-sm);
       font-weight: 500;
-      color: var(--m-text-secondary);
-      line-height: 1.55;
+      color: var(--m-gray-400);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--duration-fast) ease;
+      white-space: nowrap;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: var(--font-primary);
     }
-    .m-feature__list-icon {
+
+    .m-tab:hover {
+      color: var(--m-text);
+    }
+
+    .m-tab.is-active {
+      color: var(--m-blue);
+      border-bottom-color: var(--m-blue);
+      font-weight: 600;
+    }
+
+    /* Feature detail sections */
+    .m-product-section {
+      scroll-margin-top: calc(var(--nav-height) + 52px);
+    }
+
+    /* Capability list within feature sections */
+    .m-capabilities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .m-capability {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .m-capability__icon {
       width: 20px;
       height: 20px;
       flex-shrink: 0;
+      margin-top: 2px;
       color: var(--m-blue);
-      margin-top: 1px;
     }
 
-    /* Mid-page CTA band */
-    .m-mid-cta {
-      padding: var(--space-4xl) 0;
-      background: linear-gradient(135deg, var(--m-blue) 0%, var(--m-blue-bright) 100%);
-      text-align: center;
+    .m-capability__text {
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--m-text);
+      font-weight: 500;
     }
-    .m-mid-cta .m-heading { color: var(--m-white); margin-bottom: var(--space-sm); }
-    .m-mid-cta .m-body { color: rgba(255,255,255,0.8); margin-bottom: var(--space-xl); }
 
-    /* Tab active indicator animation */
-    .m-tab { position: relative; }
-    .m-tab::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--m-blue);
+    /* Mini feature cards for AI section */
+    .m-mini-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-3xl);
+    }
+
+    .m-mini-card {
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all var(--duration-base) var(--ease-out);
-      transform: translateX(-50%);
     }
-    .m-tab--active::after { width: 100%; }
-    .m-tab--active { border-bottom-color: transparent; }
+
+    .m-mini-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .m-mini-card__title {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--m-white);
+      margin-bottom: var(--space-xs);
+    }
+
+    .m-mini-card__desc {
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--m-gray-200);
+    }
+
+    /* Integration logos grid */
+    .m-integrations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .m-integration-card {
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--m-ghost);
+      background: var(--m-white);
+      text-align: center;
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .m-integration-card:hover {
+      border-color: var(--m-blue-light);
+      box-shadow: 0 8px 24px rgba(42, 91, 215, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .m-integration-card__name {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--m-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .m-integration-card__type {
+      font-size: var(--text-xs);
+      color: var(--m-gray-300);
+    }
+
+    /* Full-width screenshot showcase */
+    .m-product-showcase {
+      max-width: 1100px;
+      margin: var(--space-3xl) auto 0;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow:
+        0 40px 80px rgba(13, 27, 62, 0.1),
+        0 0 0 1px rgba(13, 27, 62, 0.04);
+    }
+
+    .m-product-showcase img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Section divider number badge */
+    .m-section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--m-blue), var(--m-blue-bright));
+      color: var(--m-white);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+
+    .m-section--dark .m-section-number {
+      background: linear-gradient(135deg, var(--m-cyan), var(--m-cyan-soft));
+      color: var(--m-midnight);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .m-capabilities {
+        grid-template-columns: 1fr;
+      }
+
+      .m-mini-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .m-integrations-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .m-product-hero {
+        padding-top: calc(var(--nav-height) + var(--space-3xl));
+        padding-bottom: var(--space-2xl);
+      }
+
+      .m-tabs__inner {
+        padding: 0 var(--space-md);
+      }
+
+      .m-tab {
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-xs);
+      }
+
+      .m-integrations-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mosaic",
-    "applicationCategory": "BusinessApplication",
-    "url": "https://www.mosaicapp.com/product",
-    "description": "AI-powered resource and project management platform for professional services.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Mosaic"
-    }
-  }
-  </script>
 </head>
 <body class="redesign">
 
@@ -92,14 +296,13 @@
   <nav class="m-nav" id="mainNav">
     <div class="m-nav__inner">
       <a href="index-redesign.html" class="m-nav__logo">
-        <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic" height="26">
+        <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic" height="28">
       </a>
-
       <ul class="m-nav__links">
         <li class="m-dropdown">
-          <span class="m-nav__link m-nav__link--dropdown">Product</span>
+          <span class="m-nav__link m-nav__link--dropdown" style="color: var(--m-text);">Product</span>
           <div class="m-dropdown__menu">
-            <a href="product-redesign.html" class="m-dropdown__item">
+            <a href="../mosaicapp-staging/product/resource-planning.html" class="m-dropdown__item">
               <img src="../mosaicapp-staging/images/Frame-1119.svg" alt=""> Resource Planning
             </a>
             <a href="../mosaicapp-staging/product/resource-allocation.html" class="m-dropdown__item">
@@ -125,25 +328,23 @@
             </a>
           </div>
         </li>
-        <li><a href="why-mosaic-redesign.html" class="m-nav__link">Why Mosaic?</a></li>
+        <li><a href="../mosaicapp-staging/why-mosaic.html" class="m-nav__link">Why Mosaic?</a></li>
         <li><a href="pricing-redesign.html" class="m-nav__link">Pricing</a></li>
         <li class="m-dropdown">
           <span class="m-nav__link m-nav__link--dropdown">Resources</span>
           <div class="m-dropdown__menu">
             <a href="../mosaicapp-staging/roi-with-strategic-resource-planning.html" class="m-dropdown__item">ROI Calculator</a>
-            <a href="casestudies-redesign.html" class="m-dropdown__item">Customer Stories</a>
+            <a href="../mosaicapp-staging/casestudies.html" class="m-dropdown__item">Customer Stories</a>
             <a href="../mosaicapp-staging/blog.html" class="m-dropdown__item">Blog</a>
             <a href="../mosaicapp-staging/glossary.html" class="m-dropdown__item">Glossary</a>
             <a href="../mosaicapp-staging/events-webinars.html" class="m-dropdown__item">Events & Webinars</a>
           </div>
         </li>
       </ul>
-
       <div class="m-nav__actions">
         <a href="https://login.mosaicapp.com/login" class="m-nav__signin">Sign In</a>
         <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary m-btn--sm">Book Demo</a>
       </div>
-
       <div class="m-nav__mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </div>
@@ -151,425 +352,539 @@
   </nav>
 
   <!-- ====== PRODUCT HERO ====== -->
-  <section class="m-product-hero">
+  <section class="m-product-hero" style="position: relative; overflow: hidden;">
     <div class="m-product-hero__bg"></div>
-    <div class="m-container" style="position:relative;z-index:1;">
-      <div class="m-reveal">
-        <div class="m-eyebrow" style="justify-content:center;">
-          <span class="m-eyebrow__dot"></span>
-          The Complete Platform
-        </div>
-        <h1 class="m-display m-display--hero" style="max-width:820px;margin:0 auto var(--space-lg);">
-          One platform to plan, staff, and <span class="m-text-gradient m-text-gradient--strong">optimize every project</span>
-        </h1>
-        <p class="m-body m-body--lg" style="max-width:600px;margin:0 auto var(--space-2xl);">
-          Seven integrated modules give professional services firms total visibility into resources, projects, and profitability — powered by AI.
-        </p>
-        <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-md);">
-          <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary m-btn--lg">
-            Book a Demo
-            <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <a href="pricing-redesign.html" class="m-btn m-btn--secondary">View Pricing</a>
-        </div>
+    <div class="m-mosaic-pattern m-mosaic-pattern--hero" style="top: 20%; left: -3%;"></div>
+    <div class="m-container">
+      <svg class="m-deco-mosaic" width="120" height="120" viewBox="0 0 120 120" fill="none" style="position: absolute; bottom: -20px; left: -30px; opacity: 0.08;">
+        <rect x="0" y="0" width="35" height="35" rx="4" fill="#2a5bd7"/>
+        <rect x="42" y="0" width="35" height="35" rx="4" fill="#38d9c5"/>
+        <rect x="84" y="0" width="35" height="35" rx="4" fill="#5b8cfa"/>
+        <rect x="0" y="42" width="35" height="35" rx="4" fill="#38d9c5"/>
+        <rect x="42" y="42" width="35" height="35" rx="4" fill="#0d1b3e"/>
+        <rect x="84" y="42" width="35" height="35" rx="4" fill="#2a5bd7"/>
+        <rect x="0" y="84" width="35" height="35" rx="4" fill="#5b8cfa"/>
+        <rect x="42" y="84" width="35" height="35" rx="4" fill="#2a5bd7"/>
+        <rect x="84" y="84" width="35" height="35" rx="4" fill="#38d9c5"/>
+      </svg>
+      <div class="m-label m-mb-md">Platform Overview</div>
+      <div class="m-deco-line"></div>
+      <h1 class="m-display m-display--section">One platform to manage your<br><span class="m-text-gradient">people, projects, and profitability</span></h1>
+      <p class="m-body m-body--lg">Mosaic replaces disconnected spreadsheets and siloed tools with a unified, AI-powered platform that gives you complete visibility into resource planning, project delivery, and financial performance.</p>
+      <div class="m-cta__actions">
+        <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary m-btn--lg">
+          Book a Demo
+          <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../mosaicapp-staging/5-minute-demo.html" class="m-btn m-btn--secondary">Watch 5-Min Demo</a>
       </div>
     </div>
   </section>
 
-  <!-- ====== STICKY TAB NAVIGATION ====== -->
+  <!-- ====== TAB NAVIGATION ====== -->
   <div class="m-tabs" id="productTabs">
-    <div class="m-container">
-      <div class="m-tabs__inner">
-        <a href="#resource-planning" class="m-tab m-tab--active" data-tab="resource-planning">Resource Planning</a>
-        <a href="#resource-allocation" class="m-tab" data-tab="resource-allocation">Resource Allocation</a>
-        <a href="#capacity-planning" class="m-tab" data-tab="capacity-planning">Capacity Planning</a>
-        <a href="#workforce-intelligence" class="m-tab" data-tab="workforce-intelligence">Workforce Intelligence</a>
-        <a href="#project-planning" class="m-tab" data-tab="project-planning">Project Planning</a>
-        <a href="#financial-controls" class="m-tab" data-tab="financial-controls">Financial Controls</a>
-        <a href="#ai-forecasting" class="m-tab" data-tab="ai-forecasting">AI & Forecasting</a>
-      </div>
+    <div class="m-tabs__inner">
+      <button class="m-tab is-active" data-target="resource-planning">Resource Planning</button>
+      <button class="m-tab" data-target="resource-allocation">Resource Allocation</button>
+      <button class="m-tab" data-target="capacity-planning">Capacity Planning</button>
+      <button class="m-tab" data-target="workforce-intelligence">Workforce Intelligence</button>
+      <button class="m-tab" data-target="project-planning">Project Planning</button>
+      <button class="m-tab" data-target="financial-controls">Financial Controls</button>
+      <button class="m-tab" data-target="ai-forecasting">AI & Forecasting</button>
+      <button class="m-tab" data-target="integrations">Integrations</button>
     </div>
   </div>
 
-  <!-- ====== MODULE 1: RESOURCE PLANNING ====== -->
-  <section class="m-section m-section--breathe" id="resource-planning">
+  <!-- ====== 1. RESOURCE PLANNING ====== -->
+  <section class="m-section m-feature m-reveal m-product-section" id="resource-planning">
     <div class="m-container">
-      <div class="m-feature__split m-reveal">
+      <div class="m-feature__split">
         <div class="m-feature__text">
-          <div class="m-label m-mb-md">Resource Planning</div>
-          <h2 class="m-heading m-heading--lg">Build work plans that balance people and projects</h2>
-          <p class="m-body" style="margin-bottom:var(--space-xl);">
-            Create detailed resource plans that align team capacity with project demand. Drag-and-drop scheduling, role-based assignments, and real-time availability make planning effortless.
-          </p>
-          <ul class="m-feature__list">
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Drag-and-drop scheduling across projects and teams
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Role-based and skill-based resource matching
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Real-time availability and conflict detection
-            </li>
-          </ul>
+          <div class="m-section-number">1</div>
+          <div class="m-label">Resource Planning</div>
+          <h2 class="m-heading m-heading--lg">Make resource planning a team sport</h2>
+          <p class="m-body">Mosaic provides visibility so every manager is working together to ensure everyone is busy -- maximizing efficiency and significantly increasing profitability. Centralize your resource management to eliminate siloed spreadsheets and easily access your employees.</p>
+          <div class="m-capabilities">
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">See who's available — and who's overloaded — in real time</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Take control of your schedules with drag-and-drop</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Balance workload and put an end to burnout</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Know exactly what role to hire and when</span>
+            </div>
+          </div>
           <a href="../mosaicapp-staging/product/resource-planning.html" class="m-feature-card__link">
-            Learn more
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+            Learn more about Resource Planning
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
           </a>
         </div>
         <div class="m-feature__visual">
-          <div class="m-feature__screenshot m-feature__screenshot--chrome">
-            <img src="../mosaicapp-staging/images/Mosaic-Work-Plans-copy.png" alt="Mosaic resource planning work plans interface" loading="lazy">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Mosaic-Work-Plans-copy.png" alt="Mosaic Work Plans interface showing resource planning" loading="lazy">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="m-section-divider"></div>
-
-  <!-- ====== MODULE 2: RESOURCE ALLOCATION ====== -->
-  <section class="m-section m-section--breathe" id="resource-allocation">
+  <!-- ====== 2. RESOURCE ALLOCATION ====== -->
+  <section class="m-section m-section--ghost m-feature m-reveal m-product-section" id="resource-allocation">
     <div class="m-container">
-      <div class="m-feature__split m-feature__split--reverse m-reveal">
+      <div class="m-feature__split m-feature__split--reverse">
         <div class="m-feature__text">
-          <div class="m-label m-mb-md">Resource Allocation</div>
-          <h2 class="m-heading m-heading--lg">Staff the right people on the right projects</h2>
-          <p class="m-body" style="margin-bottom:var(--space-xl);">
-            Allocate resources with precision using skill matching, availability filters, and utilization targets. See who is overbooked, who has bandwidth, and make adjustments instantly.
-          </p>
-          <ul class="m-feature__list">
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Smart recommendations based on skills and availability
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Utilization guardrails to prevent burnout
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Pipeline-aware staffing across tentative and confirmed work
-            </li>
-          </ul>
+          <div class="m-section-number">2</div>
+          <div class="m-label">Resource Allocation</div>
+          <h2 class="m-heading m-heading--lg">Unify your workforce to assemble teams in seconds</h2>
+          <p class="m-body">Mosaic's AI-powered workforce management gives you real-time access to your employees and consultants. Dozens of filters help you find anyone, with any skill, so you can assemble teams in minutes. Powerful machine learning suggests the right people for the project.</p>
+          <div class="m-capabilities">
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">AI-powered team building with smart suggestions</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Understand employee skills and availability</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Find talent hiding in plain sight across your org</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Visualize working relationships with org charts</span>
+            </div>
+          </div>
           <a href="../mosaicapp-staging/product/resource-allocation.html" class="m-feature-card__link">
-            Learn more
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+            Learn more about Resource Allocation
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
           </a>
         </div>
         <div class="m-feature__visual">
-          <div class="m-feature__screenshot m-feature__screenshot--chrome">
-            <img src="../mosaicapp-staging/images/Schedule-min.png" alt="Mosaic resource allocation scheduling view" loading="lazy">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Org-Chart-Allocation.png" alt="Mosaic org chart and allocation view" loading="lazy">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="m-section-divider"></div>
-
-  <!-- ====== MODULE 3: CAPACITY PLANNING ====== -->
-  <section class="m-section m-section--breathe m-section--ghost" id="capacity-planning">
+  <!-- ====== 3. CAPACITY PLANNING ====== -->
+  <section class="m-section m-feature m-reveal m-product-section" id="capacity-planning">
     <div class="m-container">
-      <div class="m-feature__split m-reveal">
+      <div class="m-feature__split">
         <div class="m-feature__text">
-          <div class="m-label m-mb-md">Capacity Planning</div>
-          <h2 class="m-heading m-heading--lg">See months ahead with confidence</h2>
-          <p class="m-body" style="margin-bottom:var(--space-xl);">
-            Model future demand against available capacity to proactively identify gaps. Plan hiring, manage contractors, and align headcount with your growth targets.
-          </p>
-          <ul class="m-feature__list">
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Forward-looking supply vs. demand modeling
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Scenario planning for hiring and bench management
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Department and role-level capacity breakdowns
-            </li>
-          </ul>
+          <div class="m-section-number">3</div>
+          <div class="m-label">Capacity Planning</div>
+          <h2 class="m-heading m-heading--lg">Hit every deadline by planning around actual capacity</h2>
+          <p class="m-body">Build project schedules around the actual capacity of your people. Understand what you can -- and can't -- get done while getting the data to right-size your organization. Never double book again.</p>
+          <div class="m-capabilities">
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">See who is working on what and when</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Maximize utilization by keeping everyone billable</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">AI forecasts workload to eliminate guesswork</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Plan for every scenario with what-if modeling</span>
+            </div>
+          </div>
           <a href="../mosaicapp-staging/product/capacity-planning.html" class="m-feature-card__link">
-            Learn more
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+            Learn more about Capacity Planning
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
           </a>
         </div>
         <div class="m-feature__visual">
           <div class="m-feature__screenshot">
-            <img src="../mosaicapp-staging/images/Mosaic-Planner_1.png" alt="Mosaic capacity planning planner interface" loading="lazy">
+            <img src="../mosaicapp-staging/images/Mosaic-Planner_1.png" alt="Mosaic capacity planner showing team schedules" loading="lazy">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== MID-PAGE CTA (Round 2) ====== -->
-  <section class="m-section m-section--breathe m-section--tight m-reveal">
+  <!-- ====== WORKLOAD HEATMAP SHOWCASE ====== -->
+  <section class="m-section m-section--ghost m-reveal">
     <div class="m-container">
-      <div class="m-mid-cta">
-        <p class="m-body m-body--lg" style="margin-bottom: var(--space-lg); color: var(--m-text);">See the full platform in action with a personalized demo.</p>
-        <div class="m-cta__actions">
-          <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary m-btn--gradient">Book a Demo</a>
-        </div>
+      <div class="m-feature__header">
+        <div class="m-label">Workload Visibility</div>
+        <h2 class="m-display m-display--small">Maximize utilization without burnout</h2>
+        <p class="m-body m-body--lg">Visualize workload across teams and departments to ensure everyone is at capacity without being overloaded. The heatmap makes it easy to spot imbalances at a glance.</p>
+      </div>
+      <div class="m-product-showcase">
+        <img src="../mosaicapp-staging/images/Workload_heatmap-min.png" alt="Mosaic workload heatmap showing team utilization across the organization" loading="lazy">
       </div>
     </div>
   </section>
 
-  <div class="m-section-divider"></div>
-
-  <!-- ====== MODULE 4: WORKFORCE INTELLIGENCE ====== -->
-  <section class="m-section m-section--breathe" id="workforce-intelligence">
+  <!-- ====== INLINE TESTIMONIAL ====== -->
+  <section class="m-section m-section--compact m-reveal" style="padding: var(--space-3xl) 0;">
     <div class="m-container">
-      <div class="m-feature__split m-feature__split--reverse m-reveal">
-        <div class="m-feature__text">
-          <div class="m-label m-mb-md">Workforce Intelligence</div>
-          <h2 class="m-heading m-heading--lg">Understand your team like never before</h2>
-          <p class="m-body" style="margin-bottom:var(--space-xl);">
-            Heatmaps, utilization dashboards, and workload analytics reveal exactly how your workforce is performing. Spot burnout risks, identify underutilized talent, and make data-driven staffing decisions.
-          </p>
-          <ul class="m-feature__list">
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Workload heatmaps across teams and departments
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Utilization tracking against targets
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Burnout alerts and wellness indicators
-            </li>
-          </ul>
-          <a href="../mosaicapp-staging/product/workforce-intelligence.html" class="m-feature-card__link">
-            Learn more
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
-          </a>
-        </div>
-        <div class="m-feature__visual">
-          <div class="m-feature__screenshot">
-            <img src="../mosaicapp-staging/images/Workload_heatmap-min.png" alt="Mosaic workforce intelligence workload heatmap" loading="lazy">
-          </div>
+      <div class="m-inline-quote">
+        <div class="m-inline-quote__mark">"</div>
+        <div>
+          <p class="m-inline-quote__text">Before Mosaic, we were flying blind. Now our utilization is up over 15% and we have data to back every staffing decision.</p>
+          <p class="m-inline-quote__author">— VP of Resources, Stanley Consultants</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====== MID-PAGE CTA ====== -->
-  <section class="m-mid-cta m-reveal">
+  <section class="m-section m-section--compact m-text-center m-reveal" style="padding: var(--space-3xl) 0;">
     <div class="m-container">
-      <h2 class="m-heading m-heading--lg">See how Mosaic connects the dots for your firm</h2>
-      <p class="m-body m-body--lg">Get a personalized walkthrough of the full platform in 30 minutes.</p>
-      <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-md);">
-        <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--white m-btn--gradient m-btn--lg">
-          Book a Demo
-          <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <a href="pricing-redesign.html" class="m-btn m-btn--ghost">View Pricing</a>
+      <p class="m-body m-body--lg" style="margin-bottom: var(--space-lg);">Ready to see these features in action?</p>
+      <div class="m-cta__actions">
+        <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary">Book a Demo</a>
+        <a href="../mosaicapp-staging/5-minute-demo.html" class="m-btn m-btn--secondary m-btn--sm">Watch Quick Demo</a>
       </div>
     </div>
   </section>
 
-  <!-- ====== INLINE TESTIMONIAL ====== -->
-  <section class="m-section--compact m-section m-reveal">
+  <!-- ====== 4. WORKFORCE INTELLIGENCE ====== -->
+  <section class="m-section m-feature m-reveal m-product-section" id="workforce-intelligence">
     <div class="m-container">
-      <div class="m-inline-quote m-inline-quote--elevated">
-        <div class="m-inline-quote__mark">&ldquo;</div>
-        <div>
-          <p class="m-inline-quote__text">Mosaic has been a game changer for our resource management. We can now see in real time who is available and where we have gaps. The AI forecasting alone has saved us countless hours of manual planning.</p>
-          <p class="m-inline-quote__author">Director of Operations &mdash; ME Engineers</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== MODULE 5: PROJECT PLANNING ====== -->
-  <section class="m-section m-section--breathe m-section--ghost" id="project-planning">
-    <div class="m-container">
-      <div class="m-feature__split m-reveal">
+      <div class="m-feature__split m-feature__split--reverse">
         <div class="m-feature__text">
-          <div class="m-label m-mb-md">Project Planning</div>
-          <h2 class="m-heading m-heading--lg">Plan projects with built-in resource context</h2>
-          <p class="m-body" style="margin-bottom:var(--space-xl);">
-            Build project plans that automatically factor in team availability, budgets, and timelines. Gantt views, milestones, and phase management keep every project on track.
-          </p>
-          <ul class="m-feature__list">
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Gantt charts with resource-aware scheduling
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Phase and milestone tracking with dependencies
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Real-time progress tracking against plan
-            </li>
-          </ul>
-          <a href="../mosaicapp-staging/product/project-planning.html" class="m-feature-card__link">
-            Learn more
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+          <div class="m-section-number">4</div>
+          <div class="m-label">Workforce Intelligence</div>
+          <h2 class="m-heading m-heading--lg">The insights you need before it's too late to act</h2>
+          <p class="m-body">Unlike Tableau and Power BI, Mosaic offers reports and dashboards tailored to your industry's resource management needs right out of the box -- no setup or data analyst required. Anyone can understand them at first glance.</p>
+          <div class="m-capabilities">
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Pre-built charts and graphs anyone can understand</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Shareable dashboards with KPIs and drill-down</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Variance reports for planned vs. actual analysis</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Demand and skills reports for strategic hiring</span>
+            </div>
+          </div>
+          <a href="../mosaicapp-staging/product/workforce-intelligence.html" class="m-feature-card__link">
+            Learn more about Workforce Intelligence
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
           </a>
         </div>
         <div class="m-feature__visual">
           <div class="m-feature__screenshot">
-            <img src="../mosaicapp-staging/images/New-Planner-Image.png" alt="Mosaic project planning Gantt view" loading="lazy">
+            <img src="../mosaicapp-staging/images/Mosaic-Demand-Report.png" alt="Mosaic demand report with workforce analytics" loading="lazy">
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="m-section-divider"></div>
-
-  <!-- ====== MODULE 6: FINANCIAL CONTROLS ====== -->
-  <section class="m-section m-section--breathe" id="financial-controls">
-    <div class="m-container">
-      <div class="m-feature__split m-feature__split--reverse m-reveal">
-        <div class="m-feature__text">
-          <div class="m-label m-mb-md">Financial Controls</div>
-          <h2 class="m-heading m-heading--lg">Protect margins with real-time financial visibility</h2>
-          <p class="m-body" style="margin-bottom:var(--space-xl);">
-            Track project budgets, monitor burn rates, and control fee erosion as it happens -- not weeks after the fact. Budget-to-actual reporting and automated alerts keep projects profitable.
-          </p>
-          <ul class="m-feature__list">
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Budget-to-actual tracking at every project phase
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Burn-rate monitoring with automatic alerts
-            </li>
-            <li>
-              <svg class="m-feature__list-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Revenue recognition and EAC forecasting
-            </li>
-          </ul>
-          <a href="../mosaicapp-staging/product/project-financial-controls.html" class="m-feature-card__link">
-            Learn more
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
-          </a>
-        </div>
-        <div class="m-feature__visual">
-          <div class="m-feature__screenshot">
-            <img src="../mosaicapp-staging/images/Progress-min.png" alt="Mosaic financial controls budget tracking" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="m-section-divider"></div>
-
-  <!-- ====== MODULE 7: AI & FORECASTING ====== -->
-  <section class="m-ai" id="ai-forecasting">
-    <div class="m-ai__bg"></div>
-    <div class="m-container">
-      <div class="m-ai__header m-reveal">
-        <div class="m-label m-label--light m-mb-md">AI & Forecasting</div>
-        <h2 class="m-display m-display--section">Intelligence that makes every decision smarter</h2>
-        <p class="m-body m-body--lg" style="color:var(--m-gray-200);margin-top:var(--space-lg);">
-          Mosaic's AI engine learns from your data to forecast demand, predict project outcomes, and surface recommendations that keep your firm ahead.
-        </p>
-      </div>
-
-      <div class="m-feature__split m-reveal" style="margin-bottom:var(--space-3xl);">
-        <div class="m-feature__text" style="max-width:440px;">
-          <h3 class="m-heading m-heading--md" style="color:var(--m-white);margin-bottom:var(--space-lg);">Forecast with confidence</h3>
-          <p class="m-body" style="color:var(--m-gray-200);margin-bottom:var(--space-xl);">
-            AI-powered demand forecasting uses your pipeline, historical performance, and current capacity to predict what you'll need next quarter -- and next year.
-          </p>
-          <ul class="m-feature__list">
-            <li style="color:var(--m-gray-200);">
-              <svg class="m-feature__list-icon" style="color:var(--m-cyan-soft);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Revenue and utilization forecasting
-            </li>
-            <li style="color:var(--m-gray-200);">
-              <svg class="m-feature__list-icon" style="color:var(--m-cyan-soft);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Hiring needs predictions based on pipeline
-            </li>
-            <li style="color:var(--m-gray-200);">
-              <svg class="m-feature__list-icon" style="color:var(--m-cyan-soft);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-              Automated scenario comparison
-            </li>
-          </ul>
-        </div>
-        <div class="m-feature__visual">
-          <div class="m-feature__screenshot">
-            <img src="../mosaicapp-staging/images/Mosaic-Dashboard.png" alt="Mosaic AI forecasting dashboard" loading="lazy">
-          </div>
-        </div>
-      </div>
-
-      <div class="m-ai__cards m-reveal">
-        <div class="m-ai__card">
-          <svg class="m-ai__card-icon" fill="none" stroke="var(--m-cyan-soft)" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/>
-          </svg>
-          <div class="m-ai__card-title">Smart Recommendations</div>
-          <p class="m-ai__card-desc">AI suggests optimal team compositions based on skills, availability, and past project success.</p>
-        </div>
-        <div class="m-ai__card">
-          <svg class="m-ai__card-icon" fill="none" stroke="var(--m-cyan-soft)" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
-          </svg>
-          <div class="m-ai__card-title">Predictive Analytics</div>
-          <p class="m-ai__card-desc">Get early warnings on projects at risk of going over budget or missing deadlines.</p>
-        </div>
-        <div class="m-ai__card">
-          <svg class="m-ai__card-icon" fill="none" stroke="var(--m-cyan-soft)" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/>
-          </svg>
-          <div class="m-ai__card-title">Automated Reports</div>
-          <p class="m-ai__card-desc">Demand reports, utilization summaries, and financial snapshots generated and delivered automatically.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====== STATS BAR ====== -->
-  <section class="m-section--compact m-section m-section--ghost m-reveal">
+  <section class="m-section m-section--dark m-section--compact m-reveal">
     <div class="m-container">
       <div class="m-stats">
         <div class="m-stat">
-          <div class="m-stat__number">30%</div>
-          <div class="m-stat__label">Increase in utilization</div>
+          <div class="m-stat__number">454</div>
+          <div class="m-stat__label">Inc. 5000 Ranking</div>
+        </div>
+        <div class="m-stat">
+          <div class="m-stat__number">30%+</div>
+          <div class="m-stat__label">Utilization Improvement</div>
         </div>
         <div class="m-stat">
           <div class="m-stat__number">50%</div>
-          <div class="m-stat__label">Less time spent planning</div>
+          <div class="m-stat__label">Less Time on Admin</div>
         </div>
         <div class="m-stat">
-          <div class="m-stat__number">3x</div>
-          <div class="m-stat__label">Faster resource decisions</div>
+          <div class="m-stat__number">4.5/5</div>
+          <div class="m-stat__label">Average Customer Rating</div>
         </div>
-        <div class="m-stat">
-          <div class="m-stat__number">100%</div>
-          <div class="m-stat__label">Real-time visibility</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 5. PROJECT PLANNING ====== -->
+  <section class="m-section m-feature m-reveal m-product-section" id="project-planning">
+    <div class="m-container">
+      <div class="m-feature__split">
+        <div class="m-feature__text">
+          <div class="m-section-number">5</div>
+          <div class="m-label">Project Planning</div>
+          <h2 class="m-heading m-heading--lg">Beat every deadline and get home on time</h2>
+          <p class="m-body">You're busy and your job is to manage projects, not software. Use Mosaic's project management tools to complete projects faster without burning the midnight oil. Plan visually, manage completely, and deliver efficiently.</p>
+          <div class="m-capabilities">
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Visually monitor scope creep in real time</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Task lists, assignments, and prioritization</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Drag-and-drop project schedules with templates</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Shared notes and project portfolios</span>
+            </div>
+          </div>
+          <a href="../mosaicapp-staging/product/project-planning.html" class="m-feature-card__link">
+            Learn more about Project Planning
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+        <div class="m-feature__visual">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Schedule-min.png" alt="Mosaic project schedule view with Gantt-style planning" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 6. PROJECT FINANCIAL CONTROLS ====== -->
+  <section class="m-section m-section--ghost m-feature m-reveal m-product-section" id="financial-controls">
+    <div class="m-container">
+      <div class="m-feature__split m-feature__split--reverse">
+        <div class="m-feature__text">
+          <div class="m-section-number">6</div>
+          <div class="m-label">Project Financial Controls</div>
+          <h2 class="m-heading m-heading--lg">Spot at-risk projects 3 weeks before they go over budget</h2>
+          <p class="m-body">Keep your project and finance teams in sync with real-time project budgets directly available to project managers and executives. Accurately plan, manage, and track work so you can spot potential issues and take action before it's too late.</p>
+          <div class="m-capabilities">
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Track project budgets in real time</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Capture every additional service from scope creep</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Automated timesheets with reminders</span>
+            </div>
+            <div class="m-capability">
+              <svg class="m-capability__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span class="m-capability__text">Planned vs. actual variance for better future estimates</span>
+            </div>
+          </div>
+          <a href="../mosaicapp-staging/product/project-financial-controls.html" class="m-feature-card__link">
+            Learn more about Financial Controls
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+        <div class="m-feature__visual">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Budget-min.png" alt="Mosaic budget tracking and financial controls interface" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 7. AI, AUTOMATION & FORECASTING ====== -->
+  <section class="m-section m-section--dark m-reveal m-product-section" id="ai-forecasting" style="overflow: hidden; position: relative;">
+    <div class="m-ai__bg"></div>
+    <div class="m-container" style="position: relative; z-index: 1;">
+      <div class="m-feature__header" style="max-width: 700px; margin: 0 auto var(--space-3xl);">
+        <div class="m-section-number">7</div>
+        <div class="m-label m-label--light" style="margin-bottom: var(--space-md);">AI, Automation & Forecasting</div>
+        <h2 class="m-display m-display--small" style="color: var(--m-white);">Let AI handle the heavy lifting — from team assembly to forecasting</h2>
+        <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-top: var(--space-lg);">Mosaic's powerful generative AI gets smarter over time, consistently improving plans, team suggestions, and forecasts based on what actually happens. Powered by the best LLMs in the industry.</p>
+      </div>
+
+      <div class="m-ai__models" style="margin-bottom: var(--space-3xl);">
+        <img src="../mosaicapp-staging/images/OpenAI_Logo.svg.png" alt="OpenAI" style="height: 20px;">
+        <img src="../mosaicapp-staging/images/Anthropic_logo.svg.png" alt="Anthropic" style="height: 16px;">
+        <img src="../mosaicapp-staging/images/gemini_with_space.png" alt="Google Gemini" style="height: 28px;">
+      </div>
+
+      <div class="m-mini-cards">
+        <div class="m-mini-card">
+          <div class="m-mini-card__title">AI Team Builder</div>
+          <div class="m-mini-card__desc">Set requirements for availability, skills, and more. Mosaic analyzes all data -- past projects, org charts, tasks, and budgets -- to suggest the best matches.</div>
+        </div>
+        <div class="m-mini-card">
+          <div class="m-mini-card__title">AI Workload Forecast</div>
+          <div class="m-mini-card__desc">AI actively monitors workload so you know if and when you have the people to complete new projects. Plan for what's next before things get hectic.</div>
+        </div>
+        <div class="m-mini-card">
+          <div class="m-mini-card__title">AI Headcount Planning</div>
+          <div class="m-mini-card__desc">Mosaic tells you what role you need to hire and when to right-size your organization. Stop relying on gut feel for strategic hiring decisions.</div>
+        </div>
+        <div class="m-mini-card">
+          <div class="m-mini-card__title">Work Plan Suggestions</div>
+          <div class="m-mini-card__desc">Mosaic analyzes capacity, project plans, tasks, deadlines, and budgets to suggest the right projects for the right people, increasing utilization.</div>
+        </div>
+        <div class="m-mini-card">
+          <div class="m-mini-card__title">Automated Timesheets</div>
+          <div class="m-mini-card__desc">Harness the power of automation. Mosaic automatically populates timesheets and sends reminders to anyone falling behind.</div>
+        </div>
+        <div class="m-mini-card">
+          <div class="m-mini-card__title">Revenue Forecasting</div>
+          <div class="m-mini-card__desc">Make business decisions based on what's going to happen. Mosaic analyzes historical data to accurately forecast revenue and workload.</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-3xl);">
+        <a href="../mosaicapp-staging/product/ai-automation-forecasting.html" class="m-btn m-btn--ghost">
+          Explore AI Features
+          <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FORECASTING SCREENSHOT ====== -->
+  <section class="m-section m-reveal">
+    <div class="m-container">
+      <div class="m-feature__split">
+        <div class="m-feature__text">
+          <div class="m-label">Forecasting Dashboard</div>
+          <h2 class="m-heading m-heading--lg">Know when to hire -- before it hurts</h2>
+          <p class="m-body">Stop relying on gut feel for strategic decisions. In a rapidly changing world, you need AI to forecast workload and headcount so you can confidently plan for the future.</p>
+        </div>
+        <div class="m-feature__visual">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Mosaic-Dashboard.png" alt="Mosaic dashboard showing AI forecasting data and headcount planning" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 8. INTEGRATIONS ====== -->
+  <section class="m-section m-section--ghost m-reveal m-product-section" id="integrations">
+    <div class="m-container">
+      <div class="m-feature__header">
+        <div class="m-section-number">8</div>
+        <div class="m-label">Integrations</div>
+        <h2 class="m-display m-display--small">Connects to the tools you already use</h2>
+        <p class="m-body m-body--lg">Say goodbye to double data entry. Mosaic integrates with your financial, HR, and project management tools to keep everything in sync and eliminate manual work.</p>
+      </div>
+
+      <div class="m-product-showcase" style="box-shadow: 0 24px 48px rgba(13, 27, 62, 0.08), 0 0 0 1px rgba(13, 27, 62, 0.03);">
+        <img src="../mosaicapp-staging/images/Integrations-image-with-new-QB-logo.png" alt="Mosaic integrations with QuickBooks, Sage, Deltek, and more" loading="lazy">
+      </div>
+
+      <div class="m-integrations-grid">
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">QuickBooks</div>
+          <div class="m-integration-card__type">Financial</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">Sage Intacct</div>
+          <div class="m-integration-card__type">Financial / ERP</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">Deltek Vantagepoint</div>
+          <div class="m-integration-card__type">Financial / ERP</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">BST Global</div>
+          <div class="m-integration-card__type">Financial / ERP</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">Jira</div>
+          <div class="m-integration-card__type">Project Management</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">Salesforce</div>
+          <div class="m-integration-card__type">CRM / Pipeline</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">BambooHR</div>
+          <div class="m-integration-card__type">HR / People</div>
+        </div>
+        <div class="m-integration-card">
+          <div class="m-integration-card__name">Custom API</div>
+          <div class="m-integration-card__type">Enterprise</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-2xl);">
+        <a href="../mosaicapp-staging/integrations.html" class="m-btn m-btn--secondary">
+          View All Integrations
+          <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIAL ====== -->
+  <section class="m-section m-reveal">
+    <div class="m-container">
+      <div class="m-testimonials__header">
+        <div class="m-label m-mb-md">Customer Stories</div>
+        <h2 class="m-display m-display--small">Trusted by teams that take planning seriously</h2>
+      </div>
+      <div class="m-testimonials__grid">
+        <div class="m-testimonial">
+          <p class="m-testimonial__quote">Mosaic has been a game changer for our resource management. We can now see in real time who is available and where we have gaps.</p>
+          <div class="m-testimonial__author">
+            <div class="m-testimonial__avatar">ME</div>
+            <div>
+              <div class="m-testimonial__name">Director of Operations</div>
+              <div class="m-testimonial__role">ME Engineers</div>
+            </div>
+          </div>
+        </div>
+        <div class="m-testimonial">
+          <p class="m-testimonial__quote">Before Mosaic, we were flying blind. Now our utilization is up over 15% and we have data to back every staffing decision.</p>
+          <div class="m-testimonial__author">
+            <div class="m-testimonial__avatar">SC</div>
+            <div>
+              <div class="m-testimonial__name">VP of Resources</div>
+              <div class="m-testimonial__role">Stanley Consultants</div>
+            </div>
+          </div>
+        </div>
+        <div class="m-testimonial">
+          <p class="m-testimonial__quote">The AI forecasting capabilities let us plan hiring months in advance. We've eliminated the scramble of last-minute staffing.</p>
+          <div class="m-testimonial__author">
+            <div class="m-testimonial__avatar">DR</div>
+            <div>
+              <div class="m-testimonial__name">Resource Manager</div>
+              <div class="m-testimonial__role">Dynamic Risk</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====== FINAL CTA ====== -->
-  <section class="m-section m-section--breathe m-section--gradient m-reveal">
+  <section class="m-section m-section--dark m-section--gradient m-reveal">
     <div class="m-container">
       <div class="m-cta__inner">
-        <div class="m-label m-label--light m-mb-lg">Get Started</div>
-        <h2 class="m-display m-display--section" style="color:var(--m-white);">Your next 30% utilization improvement starts with a 30-minute demo</h2>
-        <p class="m-body m-body--lg" style="color:var(--m-gray-200);margin:var(--space-xl) 0 var(--space-2xl);">
-          Join the fastest-growing resource management platform for professional services. See all seven modules working together.
+        <div class="m-label m-label--light m-mb-md">Get Started</div>
+        <h2 class="m-display m-display--section" style="color: var(--m-white);">Ready to transform how you manage your people and projects?</h2>
+        <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-bottom: var(--space-2xl);">
+          Join the fastest-growing resource management platform. See how Mosaic can improve utilization, reduce burnout, and drive profitability for your firm.
         </p>
         <div class="m-cta__actions">
-          <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--white m-btn--gradient m-btn--lg">
+          <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--white m-btn--lg">
             Book a Demo
             <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
@@ -595,7 +910,7 @@
         <div>
           <div class="m-footer__col-title">Product</div>
           <ul class="m-footer__links">
-            <li><a href="product-redesign.html" class="m-footer__link">Resource Planning</a></li>
+            <li><a href="../mosaicapp-staging/product/resource-planning.html" class="m-footer__link">Resource Planning</a></li>
             <li><a href="../mosaicapp-staging/product/resource-allocation.html" class="m-footer__link">Resource Allocation</a></li>
             <li><a href="../mosaicapp-staging/product/capacity-planning.html" class="m-footer__link">Capacity Planning</a></li>
             <li><a href="../mosaicapp-staging/product/workforce-intelligence.html" class="m-footer__link">Workforce Intelligence</a></li>
@@ -608,7 +923,7 @@
           <div class="m-footer__col-title">Resources</div>
           <ul class="m-footer__links">
             <li><a href="../mosaicapp-staging/blog.html" class="m-footer__link">Blog</a></li>
-            <li><a href="casestudies-redesign.html" class="m-footer__link">Customer Stories</a></li>
+            <li><a href="../mosaicapp-staging/casestudies.html" class="m-footer__link">Customer Stories</a></li>
             <li><a href="../mosaicapp-staging/glossary.html" class="m-footer__link">Glossary</a></li>
             <li><a href="../mosaicapp-staging/events-webinars.html" class="m-footer__link">Events & Webinars</a></li>
             <li><a href="../mosaicapp-staging/recordings-downloads.html" class="m-footer__link">Downloads</a></li>
@@ -617,8 +932,8 @@
         <div>
           <div class="m-footer__col-title">Company</div>
           <ul class="m-footer__links">
-            <li><a href="why-mosaic-redesign.html" class="m-footer__link">Why Mosaic?</a></li>
-            <li><a href="pricing-redesign.html" class="m-footer__link">Pricing</a></li>
+            <li><a href="../mosaicapp-staging/why-mosaic.html" class="m-footer__link">Why Mosaic?</a></li>
+            <li><a href="../mosaicapp-staging/mosaic-pricing.html" class="m-footer__link">Pricing</a></li>
             <li><a href="../mosaicapp-staging/mission.html" class="m-footer__link">Mission</a></li>
             <li><a href="../mosaicapp-staging/partners.html" class="m-footer__link">Partners</a></li>
             <li><a href="../mosaicapp-staging/book-a-demo.html" class="m-footer__link">Book a Demo</a></li>
@@ -640,7 +955,7 @@
 
   <!-- ====== SCRIPTS ====== -->
   <script>
-    // Navigation — scroll-aware with hide/show
+    // Scroll-direction-aware navigation
     (function() {
       var nav = document.getElementById('mainNav');
       var lastScroll = 0;
@@ -648,26 +963,32 @@
 
       function updateNav() {
         var currentScroll = window.pageYOffset;
-        if (currentScroll > 60) {
+
+        if (currentScroll > 80) {
           nav.classList.add('m-nav--scrolled');
         } else {
           nav.classList.remove('m-nav--scrolled');
         }
-        if (currentScroll > lastScroll && currentScroll > 280) {
+
+        if (currentScroll > lastScroll && currentScroll > 300) {
           nav.classList.add('m-nav--hidden');
         } else {
           nav.classList.remove('m-nav--hidden');
         }
+
         lastScroll = currentScroll;
         ticking = false;
       }
 
       window.addEventListener('scroll', function() {
-        if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+        if (!ticking) {
+          requestAnimationFrame(updateNav);
+          ticking = true;
+        }
       });
     })();
 
-    // Scroll reveal with IntersectionObserver
+    // Scroll reveal
     (function() {
       var reveals = document.querySelectorAll('.m-reveal');
       var observer = new IntersectionObserver(function(entries) {
@@ -677,110 +998,148 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-      reveals.forEach(function(el) { observer.observe(el); });
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
     })();
 
-    // Sticky tabs — highlight active tab based on scroll position
+    // Tab navigation
     (function() {
       var tabs = document.querySelectorAll('.m-tab');
-      var sections = [];
       var tabBar = document.getElementById('productTabs');
-      var navHeight = 68;
+      var sections = document.querySelectorAll('.m-product-section');
+      var isScrolling = false;
 
-      tabs.forEach(function(tab) {
-        var id = tab.getAttribute('data-tab');
-        var section = document.getElementById(id);
-        if (section) sections.push({ id: id, el: section, tab: tab });
-      });
-
-      function updateActiveTab() {
-        var scrollY = window.pageYOffset;
-        var tabBarHeight = tabBar ? tabBar.offsetHeight : 0;
-        var offset = navHeight + tabBarHeight + 40;
-        var current = null;
-
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (scrollY >= sections[i].el.offsetTop - offset) {
-            current = sections[i];
-            break;
-          }
-        }
-
-        tabs.forEach(function(t) { t.classList.remove('m-tab--active'); });
-        if (current) {
-          current.tab.classList.add('m-tab--active');
-        } else if (sections.length > 0) {
-          sections[0].tab.classList.add('m-tab--active');
-        }
-      }
-
-      var tickingTab = false;
+      // Add shadow to tabs when scrolled
       window.addEventListener('scroll', function() {
-        if (!tickingTab) {
-          requestAnimationFrame(function() { updateActiveTab(); tickingTab = false; });
-          tickingTab = true;
+        if (tabBar.getBoundingClientRect().top <= 72) {
+          tabBar.classList.add('has-shadow');
+        } else {
+          tabBar.classList.remove('has-shadow');
         }
       });
 
-      // Smooth scroll for tab clicks
+      // Click handler for tabs
       tabs.forEach(function(tab) {
-        tab.addEventListener('click', function(e) {
-          e.preventDefault();
-          var id = this.getAttribute('data-tab');
-          var target = document.getElementById(id);
-          if (target) {
-            var tabBarHeight = tabBar ? tabBar.offsetHeight : 0;
-            var top = target.offsetTop - navHeight - tabBarHeight;
-            window.scrollTo({ top: top, behavior: 'smooth' });
+        tab.addEventListener('click', function() {
+          var targetId = tab.getAttribute('data-target');
+          var targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            isScrolling = true;
+            tabs.forEach(function(t) { t.classList.remove('is-active'); });
+            tab.classList.add('is-active');
+
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Re-enable scroll tracking after animation
+            setTimeout(function() { isScrolling = false; }, 1000);
           }
         });
       });
 
-      updateActiveTab();
+      // Update active tab on scroll
+      var scrollObserver = new IntersectionObserver(function(entries) {
+        if (isScrolling) return;
+
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            tabs.forEach(function(tab) {
+              if (tab.getAttribute('data-target') === id) {
+                tabs.forEach(function(t) { t.classList.remove('is-active'); });
+                tab.classList.add('is-active');
+
+                // Scroll tab into view horizontally
+                tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              }
+            });
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '-120px 0px -50% 0px'
+      });
+
+      sections.forEach(function(section) {
+        scrollObserver.observe(section);
+      });
     })();
 
     // Count-up animation for stat numbers
     (function() {
-      var numbers = document.querySelectorAll('.m-stat__number');
-      var animated = new Set();
+      var stats = document.querySelectorAll('.m-stat__number');
+      var duration = 1600; // ms
 
-      function parseValue(text) {
+      function parseStatValue(text) {
         text = text.trim();
-        var match = text.match(/^([^\d]*)([\d.]+)(.*?)$/);
-        if (match) {
-          return { prefix: match[1], value: parseFloat(match[2]), suffix: match[3], decimals: (match[2].split('.')[1] || '').length };
+        var prefix = '';
+        var suffix = '';
+        var number = 0;
+        var decimals = 0;
+
+        // Handle formats like "4.5/5"
+        var slashMatch = text.match(/^([\d.]+)(\/\d+)$/);
+        if (slashMatch) {
+          number = parseFloat(slashMatch[1]);
+          suffix = slashMatch[2];
+          var decParts = slashMatch[1].split('.');
+          decimals = decParts.length > 1 ? decParts[1].length : 0;
+          return { number: number, decimals: decimals, prefix: prefix, suffix: suffix };
         }
-        return null;
+
+        // Handle formats like "30%+", "50%", "454"
+        var match = text.match(/^([^\d]*)([\d.]+)(.*)$/);
+        if (match) {
+          prefix = match[1];
+          number = parseFloat(match[2]);
+          suffix = match[3];
+          var decParts2 = match[2].split('.');
+          decimals = decParts2.length > 1 ? decParts2[1].length : 0;
+        }
+
+        return { number: number, decimals: decimals, prefix: prefix, suffix: suffix };
       }
 
       function animateCount(el, parsed) {
-        var duration = 1400;
+        var start = 0;
         var startTime = null;
-        function step(ts) {
-          if (!startTime) startTime = ts;
-          var progress = Math.min((ts - startTime) / duration, 1);
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          // Ease-out cubic
           var eased = 1 - Math.pow(1 - progress, 3);
-          var current = parsed.value * eased;
-          el.textContent = parsed.prefix + (parsed.decimals > 0 ? current.toFixed(parsed.decimals) : Math.round(current)) + parsed.suffix;
-          if (progress < 1) requestAnimationFrame(step);
+          var current = eased * parsed.number;
+          el.textContent = parsed.prefix + current.toFixed(parsed.decimals) + parsed.suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = parsed.prefix + parsed.number.toFixed(parsed.decimals) + parsed.suffix;
+          }
         }
+
         requestAnimationFrame(step);
       }
 
-      var obs = new IntersectionObserver(function(entries) {
+      var statObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting && !animated.has(entry.target)) {
-            animated.add(entry.target);
-            var p = parseValue(entry.target.textContent);
-            if (p) animateCount(entry.target, p);
-            obs.unobserve(entry.target);
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var parsed = parseStatValue(el.textContent);
+            if (parsed.number > 0) {
+              animateCount(el, parsed);
+            }
+            statObserver.unobserve(el);
           }
         });
-      }, { threshold: 0.3 });
+      }, { threshold: 0.5 });
 
-      numbers.forEach(function(el) { obs.observe(el); });
+      stats.forEach(function(el) {
+        statObserver.observe(el);
+      });
     })();
   </script>
 

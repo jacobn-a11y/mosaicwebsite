@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" fill="none">
+  <defs>
+    <radialGradient id="ag1" cx="30%" cy="40%">
+      <stop offset="0%" stop-color="#3b6ff0" stop-opacity=".2"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="ag2" cx="70%" cy="60%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity=".15"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <filter id="aglow"><feGaussianBlur stdDeviation="2"/></filter>
+  </defs>
+
+  <!-- Ambient glow -->
+  <rect width="1200" height="600" fill="url(#ag1)"/>
+  <rect width="1200" height="600" fill="url(#ag2)"/>
+
+  <!-- Constellation lines -->
+  <g stroke="rgba(91,140,255,.12)" stroke-width="1">
+    <line x1="100" y1="200" x2="250" y2="150"/>
+    <line x1="250" y1="150" x2="400" y2="250"/>
+    <line x1="400" y1="250" x2="550" y2="180"/>
+    <line x1="550" y1="180" x2="700" y2="300"/>
+    <line x1="700" y1="300" x2="850" y2="220"/>
+    <line x1="850" y1="220" x2="1000" y2="350"/>
+    <line x1="1000" y1="350" x2="1100" y2="280"/>
+    <line x1="250" y1="150" x2="300" y2="350"/>
+    <line x1="300" y1="350" x2="400" y2="250"/>
+    <line x1="400" y1="250" x2="500" y2="400"/>
+    <line x1="500" y1="400" x2="700" y2="300"/>
+    <line x1="700" y1="300" x2="750" y2="450"/>
+    <line x1="750" y1="450" x2="1000" y2="350"/>
+    <line x1="550" y1="180" x2="600" y2="80"/>
+    <line x1="600" y1="80" x2="800" y2="120"/>
+    <line x1="800" y1="120" x2="850" y2="220"/>
+    <line x1="150" y1="400" x2="300" y2="350"/>
+    <line x1="500" y1="400" x2="600" y2="500"/>
+    <line x1="600" y1="500" x2="750" y2="450"/>
+  </g>
+
+  <!-- Data flow animations -->
+  <g fill="none" stroke-width="1.5" opacity=".25">
+    <path d="M100 200 L250 150 L400 250 L550 180 L700 300" stroke="#5b8cff" stroke-dasharray="4 6">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M300 350 L500 400 L700 300 L1000 350" stroke="#5eead4" stroke-dasharray="4 6">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M600 80 L800 120 L850 220 L1000 350 L1100 280" stroke="#5b8cff" stroke-dasharray="4 6">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Nodes -->
+  <g filter="url(#aglow)">
+    <circle cx="100" cy="200" r="3" fill="#5b8cff" opacity=".6"/>
+    <circle cx="250" cy="150" r="4" fill="#5eead4" opacity=".7"/>
+    <circle cx="400" cy="250" r="5" fill="#5b8cff" opacity=".8"/>
+    <circle cx="550" cy="180" r="3.5" fill="#5eead4" opacity=".7"/>
+    <circle cx="700" cy="300" r="5" fill="#5b8cff" opacity=".8"/>
+    <circle cx="850" cy="220" r="4" fill="#5eead4" opacity=".7"/>
+    <circle cx="1000" cy="350" r="4" fill="#5b8cff" opacity=".6"/>
+    <circle cx="1100" cy="280" r="3" fill="#5eead4" opacity=".5"/>
+    <circle cx="300" cy="350" r="3" fill="#5b8cff" opacity=".5"/>
+    <circle cx="500" cy="400" r="4" fill="#5eead4" opacity=".6"/>
+    <circle cx="750" cy="450" r="3" fill="#5b8cff" opacity=".5"/>
+    <circle cx="600" cy="80" r="3" fill="#5eead4" opacity=".5"/>
+    <circle cx="800" cy="120" r="3.5" fill="#5b8cff" opacity=".6"/>
+    <circle cx="150" cy="400" r="2.5" fill="#5eead4" opacity=".4"/>
+    <circle cx="600" cy="500" r="2.5" fill="#5b8cff" opacity=".4"/>
+  </g>
+
+  <!-- Pulse rings -->
+  <circle cx="400" cy="250" r="5" fill="none" stroke="#5b8cff" stroke-width=".8" opacity="0">
+    <animate attributeName="r" from="5" to="30" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" from=".4" to="0" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="700" cy="300" r="5" fill="none" stroke="#5eead4" stroke-width=".8" opacity="0">
+    <animate attributeName="r" from="5" to="28" dur="3.5s" begin="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" from=".3" to="0" dur="3.5s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+</svg>

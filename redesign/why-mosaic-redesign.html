@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Why Mosaic? — The Case for AI-Powered Resource Management</title>
+  <meta content="See why hundreds of firms trust Mosaic for resource planning. Beat spreadsheets, outgrow ERPs, and unlock 30%+ utilization improvement with AI-powered workforce intelligence." name="description">
+  <meta content="Why Mosaic? — The Case for AI-Powered Resource Management" property="og:title">
+  <meta content="See why hundreds of firms trust Mosaic for resource planning. Beat spreadsheets, outgrow ERPs, and unlock 30%+ utilization improvement with AI-powered workforce intelligence." property="og:description">
+  <meta content="https://uploads-ssl.webflow.com/60b7d9f08337276663c17190/61606a58adcbc6fc6f24485b_Why%20Mosaic%20OG%20Image.png" property="og:image">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="../mosaicapp-staging/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="../mosaicapp-staging/images/webclip.png" rel="apple-touch-icon">
+  <link href="https://www.mosaicapp.com/why-mosaic" rel="canonical">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/redesign.css" rel="stylesheet">
+  <style>
+    /* ===== Why Mosaic Page-Specific Styles ===== */
+
+    /* Hero — centered, conviction-first layout */
+    .wm-hero {
+      padding-top: calc(var(--nav-height) + var(--space-5xl));
+      padding-bottom: var(--space-4xl);
+      background: linear-gradient(180deg, var(--m-white) 0%, var(--m-off-white) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wm-hero__bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .wm-hero__bg-orb {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(ellipse at center, rgba(42, 91, 215, 0.06) 0%, transparent 65%);
+      animation: heroGlow 12s ease-in-out infinite alternate;
+    }
+
+    .wm-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .wm-hero__title {
+      margin-bottom: var(--space-xl);
+    }
+
+    .wm-hero__subtitle {
+      max-width: 620px;
+      margin: 0 auto var(--space-2xl);
+    }
+
+    .wm-hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .wm-hero__screenshot {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow:
+        0 40px 80px rgba(13, 27, 62, 0.12),
+        0 16px 32px rgba(13, 27, 62, 0.08),
+        0 0 0 1px rgba(13, 27, 62, 0.04);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .wm-hero__screenshot img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ===== Differentiators — Comparison Table ===== */
+    .wm-compare {
+      position: relative;
+    }
+
+    .wm-compare__header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-4xl);
+    }
+
+    .wm-compare__header .m-label {
+      margin-bottom: var(--space-md);
+    }
+
+    .wm-compare__header .m-display {
+      margin-bottom: var(--space-lg);
+    }
+
+    .wm-compare__table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(13, 27, 62, 0.06);
+    }
+
+    .wm-compare__table thead th {
+      background: var(--m-midnight);
+      color: var(--m-white);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: var(--space-lg) var(--space-xl);
+      text-align: left;
+    }
+
+    .wm-compare__table thead th:first-child {
+      width: 35%;
+    }
+
+    .wm-compare__table thead th.wm-compare__highlight {
+      background: var(--m-blue);
+      text-align: center;
+    }
+
+    .wm-compare__table thead th:not(:first-child):not(.wm-compare__highlight) {
+      text-align: center;
+      color: var(--m-gray-200);
+    }
+
+    .wm-compare__table tbody td {
+      padding: var(--space-md) var(--space-xl);
+      border-bottom: 1px solid var(--m-ghost);
+      font-size: var(--text-sm);
+      color: var(--m-text);
+      font-weight: 500;
+    }
+
+    .wm-compare__table tbody td:not(:first-child) {
+      text-align: center;
+    }
+
+    .wm-compare__table tbody td.wm-compare__highlight-col {
+      background: rgba(42, 91, 215, 0.03);
+    }
+
+    .wm-compare__table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .wm-compare__table tbody tr {
+      transition: background var(--duration-fast) ease;
+    }
+
+    .wm-compare__table tbody tr:hover {
+      background: var(--m-off-white);
+    }
+
+    .wm-compare__check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(56, 217, 197, 0.12);
+      color: var(--m-cyan);
+    }
+
+    .wm-compare__x {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255, 107, 74, 0.1);
+      color: var(--m-coral);
+    }
+
+    .wm-compare__partial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(248, 196, 54, 0.12);
+      color: #d4a017;
+    }
+
+    /* ===== ROI / Impact Stats ===== */
+    .wm-impact {
+      text-align: center;
+    }
+
+    .wm-impact__header {
+      max-width: 700px;
+      margin: 0 auto var(--space-4xl);
+    }
+
+    .wm-impact__header .m-label {
+      margin-bottom: var(--space-md);
+    }
+
+    .wm-impact__header .m-display {
+      margin-bottom: var(--space-lg);
+    }
+
+    .wm-impact__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+      margin-bottom: var(--space-4xl);
+    }
+
+    .wm-impact__card {
+      padding: var(--space-2xl) var(--space-lg);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .wm-impact__card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .wm-impact__number {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+      background: linear-gradient(135deg, var(--m-blue-light), var(--m-cyan-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wm-impact__label {
+      font-size: var(--text-sm);
+      color: var(--m-gray-200);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .wm-impact__cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    /* ===== Proof Points / Testimonials — featured-quote style ===== */
+    .wm-proof__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--space-4xl);
+    }
+
+    .wm-proof__header .m-label {
+      margin-bottom: var(--space-md);
+    }
+
+    .wm-proof__header .m-display {
+      margin-bottom: var(--space-lg);
+    }
+
+    .wm-proof__featured {
+      max-width: 900px;
+      margin: 0 auto var(--space-4xl);
+      padding: var(--space-3xl);
+      border-radius: var(--radius-xl);
+      background: var(--m-off-white);
+      border: 1px solid var(--m-ghost);
+      text-align: center;
+      position: relative;
+    }
+
+    .wm-proof__featured-quote {
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: var(--m-text);
+      margin-bottom: var(--space-xl);
+      font-style: italic;
+    }
+
+    .wm-proof__featured-quote::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: var(--m-blue);
+      display: block;
+      line-height: 0.5;
+      margin-bottom: var(--space-lg);
+    }
+
+    .wm-proof__featured-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .wm-proof__featured-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--m-blue), var(--m-blue-bright));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--m-white);
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+
+    .wm-proof__featured-name {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--m-text);
+    }
+
+    .wm-proof__featured-role {
+      font-size: var(--text-sm);
+      color: var(--m-gray-300);
+    }
+
+    /* ===== "Top 5 Reasons" section ===== */
+    .wm-reasons {
+      counter-reset: reason;
+    }
+
+    .wm-reasons__header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-4xl);
+    }
+
+    .wm-reasons__header .m-label {
+      margin-bottom: var(--space-md);
+    }
+
+    .wm-reasons__header .m-display {
+      margin-bottom: var(--space-lg);
+    }
+
+    .wm-reasons__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .wm-reasons__item {
+      counter-increment: reason;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-lg);
+      padding: var(--space-xl) var(--space-2xl);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--m-ghost);
+      background: var(--m-white);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .wm-reasons__item:hover {
+      border-color: var(--m-blue-light);
+      box-shadow: 0 8px 32px rgba(42, 91, 215, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .wm-reasons__number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--m-blue), var(--m-blue-bright));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--m-white);
+    }
+
+    .wm-reasons__number::before {
+      content: counter(reason);
+    }
+
+    .wm-reasons__text {
+      font-size: var(--text-md);
+      line-height: 1.6;
+      color: var(--m-text);
+      font-weight: 500;
+    }
+
+    /* ===== Inc. 5000 Award Banner ===== */
+    .wm-award {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wm-award__badge-container {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-xl) var(--space-3xl);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .wm-award__rank {
+      font-size: var(--text-5xl);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--m-blue-light), var(--m-cyan-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wm-award__rank-context {
+      text-align: left;
+    }
+
+    .wm-award__rank-label {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--m-white);
+      line-height: 1.3;
+    }
+
+    .wm-award__rank-sub {
+      font-size: var(--text-sm);
+      color: var(--m-gray-200);
+      margin-top: 4px;
+    }
+
+    .wm-award__text {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ===== Responsive overrides for Why Mosaic ===== */
+    @media (max-width: 1024px) {
+      .wm-impact__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .wm-compare__table {
+        font-size: var(--text-xs);
+      }
+
+      .wm-compare__table thead th,
+      .wm-compare__table tbody td {
+        padding: var(--space-sm) var(--space-md);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .wm-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .wm-impact__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+      }
+
+      .wm-compare__table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 calc(-1 * var(--space-lg));
+        padding: 0 var(--space-lg);
+      }
+
+      .wm-compare__table {
+        min-width: 600px;
+      }
+
+      .wm-proof__featured {
+        padding: var(--space-2xl) var(--space-lg);
+      }
+
+      .wm-proof__featured-quote {
+        font-size: var(--text-xl);
+      }
+
+      .wm-reasons__item {
+        padding: var(--space-lg);
+      }
+
+      .wm-award__badge-container {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-xl);
+      }
+
+      .wm-award__rank-context {
+        text-align: center;
+      }
+
+      .wm-impact__cta-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Why Mosaic?",
+    "description": "See why hundreds of firms trust Mosaic for resource planning.",
+    "url": "https://www.mosaicapp.com/why-mosaic",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mosaic"
+    }
+  }
+  </script>
+</head>
+<body class="redesign">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="m-nav" id="mainNav">
+    <div class="m-nav__inner">
+      <a href="index-redesign.html" class="m-nav__logo">
+        <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic" height="28">
+      </a>
+
+      <ul class="m-nav__links">
+        <li class="m-dropdown">
+          <span class="m-nav__link m-nav__link--dropdown">Product</span>
+          <div class="m-dropdown__menu">
+            <a href="../mosaicapp-staging/product/resource-planning.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/Frame-1119.svg" alt=""> Resource Planning
+            </a>
+            <a href="../mosaicapp-staging/product/resource-allocation.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/Mediamodifier-Design.svg" alt=""> Resource Allocation
+            </a>
+            <a href="../mosaicapp-staging/product/capacity-planning.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/schedule-icon-white.png" alt=""> Capacity Planning
+            </a>
+            <a href="../mosaicapp-staging/product/workforce-intelligence.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/Frame-1120.svg" alt=""> Workforce Intelligence
+            </a>
+            <a href="../mosaicapp-staging/product/project-planning.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/Frame-1122-1.svg" alt=""> Project Planning
+            </a>
+            <a href="../mosaicapp-staging/product/project-financial-controls.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/Frame-1123.svg" alt=""> Financial Controls
+            </a>
+            <a href="../mosaicapp-staging/product/ai-automation-forecasting.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/settings.svg" alt=""> AI & Forecasting
+            </a>
+            <a href="../mosaicapp-staging/integrations.html" class="m-dropdown__item">
+              <img src="../mosaicapp-staging/images/icons8-software-60.svg" alt=""> Integrations
+            </a>
+          </div>
+        </li>
+        <li><a href="../mosaicapp-staging/why-mosaic.html" class="m-nav__link" style="color: var(--m-blue);">Why Mosaic?</a></li>
+        <li><a href="../mosaicapp-staging/mosaic-pricing.html" class="m-nav__link">Pricing</a></li>
+        <li class="m-dropdown">
+          <span class="m-nav__link m-nav__link--dropdown">Resources</span>
+          <div class="m-dropdown__menu">
+            <a href="../mosaicapp-staging/roi-with-strategic-resource-planning.html" class="m-dropdown__item">ROI Calculator</a>
+            <a href="../mosaicapp-staging/casestudies.html" class="m-dropdown__item">Customer Stories</a>
+            <a href="../mosaicapp-staging/blog.html" class="m-dropdown__item">Blog</a>
+            <a href="../mosaicapp-staging/glossary.html" class="m-dropdown__item">Glossary</a>
+            <a href="../mosaicapp-staging/events-webinars.html" class="m-dropdown__item">Events & Webinars</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="m-nav__actions">
+        <a href="https://login.mosaicapp.com/login" class="m-nav__signin">Sign In</a>
+        <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary m-btn--sm">Book Demo</a>
+      </div>
+
+      <div class="m-nav__mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== HERO — Bold conviction statement ====== -->
+  <section class="wm-hero" style="position: relative;">
+    <div class="wm-hero__bg">
+      <div class="wm-hero__bg-orb"></div>
+    </div>
+    <div class="m-container" style="position: relative;">
+      <svg class="m-deco-growth" width="200" height="120" viewBox="0 0 200 120" fill="none" style="position: absolute; right: -40px; bottom: 20px; opacity: 0.1;">
+        <path d="M10 100 L50 70 L90 80 L130 40 L170 20 L190 10" stroke="#2a5bd7" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M10 100 L50 70 L90 80 L130 40 L170 20 L190 10 V120 H10Z" fill="url(#growthGrad)" opacity="0.3"/>
+        <defs>
+          <linearGradient id="growthGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a5bd7" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#2a5bd7" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="70" r="4" fill="#38d9c5"/>
+        <circle cx="90" cy="80" r="4" fill="#2a5bd7"/>
+        <circle cx="130" cy="40" r="4" fill="#38d9c5"/>
+        <circle cx="170" cy="20" r="4" fill="#5b8cfa"/>
+        <circle cx="190" cy="10" r="5" fill="#2a5bd7"/>
+        <polygon points="185,5 195,10 185,15" fill="#2a5bd7"/>
+      </svg>
+      <div class="wm-hero__inner m-reveal">
+        <div class="m-inc-badge" style="margin-bottom: var(--space-xl);">
+          <span class="m-inc-badge__dot"></span>
+          Ranked #454 on Inc. 5000 Fastest-Growing Companies
+        </div>
+        <div class="m-deco-line"></div>
+        <h1 class="m-display m-display--hero wm-hero__title">
+          Stop managing people<br><span class="m-text-gradient">in the dark</span>
+        </h1>
+        <p class="m-body m-body--lg wm-hero__subtitle">
+          Every project-based organization struggles with the same challenge: disconnected tools, siloed data, and no way to see the full picture. Mosaic is the single source of truth that changes everything.
+        </p>
+        <div class="wm-hero__actions">
+          <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary m-btn--lg">
+            Book a Demo
+            <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="../mosaicapp-staging/5-minute-demo.html" class="m-btn m-btn--secondary">
+            Watch 5-Min Demo
+          </a>
+        </div>
+      </div>
+      <div class="wm-hero__screenshot m-reveal m-reveal--delay-2">
+        <img src="../mosaicapp-staging/images/Mosaic-Work-Plans-copy.png" alt="Mosaic platform showing unified resource planning across teams and projects" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LOGO TRUST BAR ====== -->
+  <section class="m-logos">
+    <div class="m-container">
+      <p class="m-body--sm m-text-center m-logos__label" style="color: var(--m-gray-300);">Trusted by leading engineering, architecture, and professional services firms</p>
+    </div>
+    <div class="m-logos__track">
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-cpl.png" alt="CPL"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/me-engineers-black.png" alt="ME Engineers"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-ceso.png" alt="CESO"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-kpff.png" alt="KPFF"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/cetra-logo.png" alt="Cetra"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/TYLin.png" alt="TYLin"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-dynamic-risk.png" alt="Dynamic Risk"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-stanley-consult.png" alt="Stanley Consultants"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-silman.png" alt="Silman"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/assistRx-black.png" alt="AssistRx"></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-cpl.png" alt="CPL"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/me-engineers-black.png" alt="ME Engineers"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-ceso.png" alt="CESO"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-kpff.png" alt="KPFF"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/cetra-logo.png" alt="Cetra"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/TYLin.png" alt="TYLin"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-dynamic-risk.png" alt="Dynamic Risk"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-stanley-consult.png" alt="Stanley Consultants"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/black-silman.png" alt="Silman"></div>
+      <div class="m-logos__item"><img src="../mosaicapp-staging/images/assistRx-black.png" alt="AssistRx"></div>
+    </div>
+  </section>
+
+  <!-- ====== KEY DIFFERENTIATORS — Comparison Table ====== -->
+  <section class="m-section wm-compare m-reveal" id="differentiators">
+    <div class="m-container">
+      <div class="wm-compare__header">
+        <div class="m-label">Why Switch?</div>
+        <h2 class="m-display m-display--section">Mosaic vs. the tools<br>you've outgrown</h2>
+        <p class="m-body m-body--lg">Spreadsheets, ERPs, and generic project tools weren't designed for resource management. Mosaic was built from the ground up for this exact problem.</p>
+      </div>
+
+      <div class="wm-compare__table-wrapper">
+        <table class="wm-compare__table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Spreadsheets</th>
+              <th>ERPs</th>
+              <th>PM Tools</th>
+              <th class="wm-compare__highlight">Mosaic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Real-time resource visibility</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Cross-project workload balancing</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>AI-powered team building</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Headcount & demand forecasting</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Burnout & utilization monitoring</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Project financial controls</td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Integrates with your existing stack</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td><span class="wm-compare__partial"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+            <tr>
+              <td>Purpose-built for resource management</td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td><span class="wm-compare__x"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg></span></td>
+              <td class="wm-compare__highlight-col"><span class="wm-compare__check"><svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCT SHOWCASE — Visibility ====== -->
+  <section class="m-section m-section--ghost m-feature m-reveal" id="visibility">
+    <div class="m-container">
+      <div class="m-feature__split">
+        <div class="m-feature__text">
+          <div class="m-label">Real-Time Visibility</div>
+          <h2 class="m-heading m-heading--lg">See who is doing what, and when -- across every project</h2>
+          <p class="m-body">Instead of piecing together information from meetings, messages, spreadsheets, and ERPs, Mosaic makes resource management a team sport. Executives and project managers get real-time visibility across the entire organization.</p>
+          <a href="../mosaicapp-staging/product/resource-planning.html" class="m-feature-card__link">
+            Learn more about Resource Planning
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+        <div class="m-feature__visual">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Mosaic-Planner_1.png" alt="Mosaic Planner interface showing capacity view across teams" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCT SHOWCASE — Workload Heatmap ====== -->
+  <section class="m-section m-feature m-reveal" id="workload">
+    <div class="m-container">
+      <div class="m-feature__split m-feature__split--reverse">
+        <div class="m-feature__text">
+          <div class="m-label">Workload Intelligence</div>
+          <h2 class="m-heading m-heading--lg">Maximize utilization without burning people out</h2>
+          <p class="m-body">Visualize workload across teams and departments to ensure everyone is at capacity without being overloaded. Mosaic's heatmaps surface the problems before they become crises.</p>
+          <a href="../mosaicapp-staging/product/workforce-intelligence.html" class="m-feature-card__link">
+            Learn more about Workforce Intelligence
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+        <div class="m-feature__visual">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Workload_heatmap-min.png" alt="Mosaic workload heatmap showing team utilization levels" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCT SHOWCASE — Dashboards & Reporting ====== -->
+  <section class="m-section m-section--ghost m-feature m-reveal" id="reporting">
+    <div class="m-container">
+      <div class="m-feature__split">
+        <div class="m-feature__text">
+          <div class="m-label">Dashboards & Reporting</div>
+          <h2 class="m-heading m-heading--lg">Make faster, data-driven decisions</h2>
+          <p class="m-body">Spot risks early, forecast with confidence, and get the insights you need before it's too late to act. Mosaic surfaces the data that matters -- which projects are profitable, which are at risk, and where to invest next.</p>
+          <a href="../mosaicapp-staging/product/project-financial-controls.html" class="m-feature-card__link">
+            Learn more about Financial Controls
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8M8 3l3 4-3 4"/></svg>
+          </a>
+        </div>
+        <div class="m-feature__visual">
+          <div class="m-feature__screenshot">
+            <img src="../mosaicapp-staging/images/Mosaic-Dashboard.png" alt="Mosaic dashboard showing project financials and forecasting" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ROI / IMPACT STATS ====== -->
+  <section class="m-section m-section--dark m-section--gradient wm-impact m-reveal" id="impact">
+    <div class="m-container">
+      <div class="wm-impact__header">
+        <div class="m-label m-label--light">Measurable Impact</div>
+        <h2 class="m-display m-display--section" style="color: var(--m-white);">We believe managing better can change everything about your firm</h2>
+        <p class="m-body m-body--lg" style="color: var(--m-gray-200);">Even a small increase in utilization translates to significant additional revenue. Here's what Mosaic customers see.</p>
+      </div>
+
+      <div class="wm-impact__grid m-reveal m-reveal--delay-1">
+        <div class="wm-impact__card">
+          <div class="wm-impact__number">+2%</div>
+          <div class="wm-impact__label">Average increase in utilization</div>
+        </div>
+        <div class="wm-impact__card">
+          <div class="wm-impact__number">+30%</div>
+          <div class="wm-impact__label">Increase in profitability</div>
+        </div>
+        <div class="wm-impact__card">
+          <div class="wm-impact__number">12x</div>
+          <div class="wm-impact__label">Return on investment</div>
+        </div>
+        <div class="wm-impact__card">
+          <div class="wm-impact__number">50%</div>
+          <div class="wm-impact__label">Less time on admin & reporting</div>
+        </div>
+      </div>
+
+      <div class="wm-impact__cta-row m-reveal m-reveal--delay-2">
+        <a href="../mosaicapp-staging/roi-with-strategic-resource-planning.html" class="m-btn m-btn--white">
+          Calculate Your ROI
+          <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../mosaicapp-staging/casestudies.html" class="m-btn m-btn--ghost">Read Customer Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURED CUSTOMER PROOF POINT ====== -->
+  <section class="m-section m-reveal" id="proof">
+    <div class="m-container">
+      <div class="wm-proof__header">
+        <div class="m-label">Customer Proof</div>
+        <h2 class="m-display m-display--small">Don't take our word for it</h2>
+      </div>
+
+      <!-- Featured large quote -->
+      <div class="wm-proof__featured m-reveal m-reveal--delay-1">
+        <p class="wm-proof__featured-quote">Mosaic has been a game changer for our resource management. We can now see in real time who is available and where we have gaps. It's transformed how we staff projects.</p>
+        <div class="wm-proof__featured-author">
+          <div class="wm-proof__featured-avatar">ME</div>
+          <div style="text-align: left;">
+            <div class="wm-proof__featured-name">Director of Operations</div>
+            <div class="wm-proof__featured-role">ME Engineers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial grid -->
+      <div class="m-testimonials__grid">
+        <div class="m-testimonial m-reveal m-reveal--delay-1">
+          <p class="m-testimonial__quote">Before Mosaic, we were flying blind. Now our utilization is up over 15% and we have data to back every staffing decision.</p>
+          <div class="m-testimonial__author">
+            <div class="m-testimonial__avatar">SC</div>
+            <div>
+              <div class="m-testimonial__name">VP of Resources</div>
+              <div class="m-testimonial__role">Stanley Consultants</div>
+            </div>
+          </div>
+        </div>
+        <div class="m-testimonial m-reveal m-reveal--delay-2">
+          <p class="m-testimonial__quote">The AI forecasting capabilities let us plan hiring months in advance. We've eliminated the scramble of last-minute staffing.</p>
+          <div class="m-testimonial__author">
+            <div class="m-testimonial__avatar">DR</div>
+            <div>
+              <div class="m-testimonial__name">Resource Manager</div>
+              <div class="m-testimonial__role">Dynamic Risk</div>
+            </div>
+          </div>
+        </div>
+        <div class="m-testimonial m-reveal m-reveal--delay-3">
+          <p class="m-testimonial__quote">Mosaic makes resource management a team sport. Everyone has ownership and accountability, and we've broken down the silos that used to hold us back.</p>
+          <div class="m-testimonial__author">
+            <div class="m-testimonial__avatar">CP</div>
+            <div>
+              <div class="m-testimonial__name">Operations Director</div>
+              <div class="m-testimonial__role">CPL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TOP 5 REASONS ====== -->
+  <section class="m-section m-section--ghost wm-reasons m-reveal" id="reasons">
+    <div class="m-container">
+      <div class="wm-reasons__header">
+        <div class="m-label">The Argument</div>
+        <h2 class="m-display m-display--small">The top 5 reasons you need Mosaic</h2>
+        <p class="m-body m-body--lg">If any of these sound familiar, it's time to move beyond spreadsheets and disconnected tools.</p>
+      </div>
+
+      <div class="wm-reasons__list">
+        <div class="wm-reasons__item m-reveal m-reveal--delay-1">
+          <div class="wm-reasons__number"></div>
+          <div class="wm-reasons__text">You don't have visibility into what your team is working on -- and decisions are being made in the dark.</div>
+        </div>
+        <div class="wm-reasons__item m-reveal m-reveal--delay-1">
+          <div class="wm-reasons__number"></div>
+          <div class="wm-reasons__text">You want everyone to have ownership and accountability of their work, not just a small group of resource managers.</div>
+        </div>
+        <div class="wm-reasons__item m-reveal m-reveal--delay-2">
+          <div class="wm-reasons__number"></div>
+          <div class="wm-reasons__text">You want to break down silos in your organization to increase employee utilization and eliminate wasted capacity.</div>
+        </div>
+        <div class="wm-reasons__item m-reveal m-reveal--delay-2">
+          <div class="wm-reasons__number"></div>
+          <div class="wm-reasons__text">You want to put together the right project teams in minutes -- not days or weeks of back-and-forth.</div>
+        </div>
+        <div class="wm-reasons__item m-reveal m-reveal--delay-3">
+          <div class="wm-reasons__number"></div>
+          <div class="wm-reasons__text">You're struggling to accurately forecast workload and role demand for hiring, and you need AI to help plan for the future.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== MID-PAGE CTA ====== -->
+  <section class="m-section m-section--compact m-text-center m-reveal" style="padding: var(--space-3xl) 0;">
+    <div class="m-container">
+      <p class="m-body m-body--lg" style="margin-bottom: var(--space-lg);">See why 500+ professional services firms chose Mosaic.</p>
+      <div class="m-cta__actions">
+        <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--primary">Book a Demo</a>
+        <a href="casestudies-redesign.html" class="m-btn m-btn--secondary m-btn--sm">Read Customer Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== INC. 5000 RECOGNITION ====== -->
+  <section class="m-section m-section--dark m-section--gradient wm-award m-reveal" id="recognition">
+    <div class="m-container">
+      <div class="wm-award__badge-container">
+        <div class="wm-award__rank">#454</div>
+        <div class="wm-award__rank-context">
+          <div class="wm-award__rank-label">Inc. 5000 Fastest-Growing<br>Companies in America</div>
+          <div class="wm-award__rank-sub">2025 Ranking</div>
+        </div>
+      </div>
+      <h2 class="m-display m-display--small" style="color: var(--m-white); margin-bottom: var(--space-lg);">
+        Trusted by the firms that are growing fastest
+      </h2>
+      <p class="m-body m-body--lg wm-award__text" style="color: var(--m-gray-200); margin-bottom: var(--space-2xl);">
+        Mosaic's rapid growth isn't just about us -- it reflects the urgent need project-based organizations have for better resource management. When firms adopt Mosaic, they see results. And they tell others.
+      </p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-xl);">
+        <div class="m-hero__rating">
+          <div class="m-hero__stars">
+            <svg class="m-hero__star" viewBox="0 0 20 20"><path d="M10 1l2.39 6.57H19l-5.3 3.86 2.04 6.57L10 14.14 4.26 18l2.04-6.57L1 7.57h6.61z" fill="#f59e0b"/></svg>
+            <svg class="m-hero__star" viewBox="0 0 20 20"><path d="M10 1l2.39 6.57H19l-5.3 3.86 2.04 6.57L10 14.14 4.26 18l2.04-6.57L1 7.57h6.61z" fill="#f59e0b"/></svg>
+            <svg class="m-hero__star" viewBox="0 0 20 20"><path d="M10 1l2.39 6.57H19l-5.3 3.86 2.04 6.57L10 14.14 4.26 18l2.04-6.57L1 7.57h6.61z" fill="#f59e0b"/></svg>
+            <svg class="m-hero__star" viewBox="0 0 20 20"><path d="M10 1l2.39 6.57H19l-5.3 3.86 2.04 6.57L10 14.14 4.26 18l2.04-6.57L1 7.57h6.61z" fill="#f59e0b"/></svg>
+            <svg class="m-hero__star" viewBox="0 0 20 20"><path d="M10 1l2.39 6.57H19l-5.3 3.86 2.04 6.57L10 14.14 4.26 18l2.04-6.57L1 7.57h6.61z" fill="#f59e0b" opacity="0.4"/></svg>
+          </div>
+          <span class="m-hero__rating-text" style="color: var(--m-white);">4.5/5</span>
+        </div>
+        <span style="font-size: var(--text-sm); color: var(--m-gray-200);">on G2 and Capterra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FULL-WIDTH PRODUCT SCREENSHOT ====== -->
+  <section class="m-section m-showcase m-reveal" id="platform">
+    <div class="m-container">
+      <div class="m-showcase__header">
+        <div class="m-label">The Platform</div>
+        <h2 class="m-display m-display--small">A single source of truth for your people and projects</h2>
+        <p class="m-body m-body--lg">Instead of a small group of resource managers attempting to piece things together, Mosaic makes resource management a team sport -- managed together in real-time, powered by AI.</p>
+      </div>
+      <div class="m-showcase__frame">
+        <img src="../mosaicapp-staging/images/Mosaic-Demand-Report.png" alt="Mosaic demand report showing supply and demand analysis across the organization" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STRONG CTA ====== -->
+  <section class="m-section m-section--dark m-section--gradient m-reveal">
+    <div class="m-container">
+      <div class="m-cta__inner">
+        <div class="m-label m-label--light m-mb-md">See It For Yourself</div>
+        <h2 class="m-display m-display--section" style="color: var(--m-white);">
+          Your next 30% utilization improvement starts with a conversation
+        </h2>
+        <p class="m-body m-body--lg" style="color: var(--m-gray-200); margin-bottom: var(--space-2xl);">
+          Mosaic is something you really have to see for yourself. Book a personalized demo and discover how AI-powered resource planning can transform your firm's profitability.
+        </p>
+        <div class="m-cta__actions">
+          <a href="../mosaicapp-staging/book-a-demo.html" class="m-btn m-btn--white m-btn--lg">
+            Book a Demo
+            <svg class="m-btn__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="../mosaicapp-staging/roi-with-strategic-resource-planning.html" class="m-btn m-btn--ghost">Calculate Your ROI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="m-footer">
+    <div class="m-container">
+      <div class="m-footer__top">
+        <div class="m-footer__brand">
+          <img src="../mosaicapp-staging/images/Mosaic-logo-for-email.png" alt="Mosaic">
+          <p>The first AI-powered platform built to manage your people and projects together, reducing burnout while improving profitability.</p>
+          <div class="m-footer__security">
+            <img src="../mosaicapp-staging/images/SOC_1.png" alt="SOC 2">
+            <img src="../mosaicapp-staging/images/CSA-STAR-Level1.png" alt="CSA STAR">
+            <img src="../mosaicapp-staging/images/GDPR.png" alt="GDPR">
+          </div>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Product</div>
+          <ul class="m-footer__links">
+            <li><a href="../mosaicapp-staging/product/resource-planning.html" class="m-footer__link">Resource Planning</a></li>
+            <li><a href="../mosaicapp-staging/product/resource-allocation.html" class="m-footer__link">Resource Allocation</a></li>
+            <li><a href="../mosaicapp-staging/product/capacity-planning.html" class="m-footer__link">Capacity Planning</a></li>
+            <li><a href="../mosaicapp-staging/product/workforce-intelligence.html" class="m-footer__link">Workforce Intelligence</a></li>
+            <li><a href="../mosaicapp-staging/product/project-planning.html" class="m-footer__link">Project Planning</a></li>
+            <li><a href="../mosaicapp-staging/product/ai-automation-forecasting.html" class="m-footer__link">AI & Forecasting</a></li>
+            <li><a href="../mosaicapp-staging/integrations.html" class="m-footer__link">Integrations</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Resources</div>
+          <ul class="m-footer__links">
+            <li><a href="../mosaicapp-staging/blog.html" class="m-footer__link">Blog</a></li>
+            <li><a href="../mosaicapp-staging/casestudies.html" class="m-footer__link">Customer Stories</a></li>
+            <li><a href="../mosaicapp-staging/glossary.html" class="m-footer__link">Glossary</a></li>
+            <li><a href="../mosaicapp-staging/events-webinars.html" class="m-footer__link">Events & Webinars</a></li>
+            <li><a href="../mosaicapp-staging/recordings-downloads.html" class="m-footer__link">Downloads</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="m-footer__col-title">Company</div>
+          <ul class="m-footer__links">
+            <li><a href="../mosaicapp-staging/why-mosaic.html" class="m-footer__link">Why Mosaic?</a></li>
+            <li><a href="../mosaicapp-staging/mosaic-pricing.html" class="m-footer__link">Pricing</a></li>
+            <li><a href="../mosaicapp-staging/mission.html" class="m-footer__link">Mission</a></li>
+            <li><a href="../mosaicapp-staging/partners.html" class="m-footer__link">Partners</a></li>
+            <li><a href="../mosaicapp-staging/book-a-demo.html" class="m-footer__link">Book a Demo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="m-footer__bottom">
+        <div class="m-footer__legal">&copy; 2026 Mosaic. All rights reserved.</div>
+        <div class="m-footer__legal-links">
+          <a href="../mosaicapp-staging/privacy-policy.html">Privacy Policy</a>
+          <a href="../mosaicapp-staging/terms.html">Terms of Service</a>
+          <a href="../mosaicapp-staging/cookies.html">Cookie Policy</a>
+          <a href="../mosaicapp-staging/dpa.html">DPA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    // Scroll-direction-aware navigation
+    (function() {
+      var nav = document.getElementById('mainNav');
+      var lastScroll = 0;
+      var ticking = false;
+
+      function updateNav() {
+        var currentScroll = window.pageYOffset;
+
+        if (currentScroll > 80) {
+          nav.classList.add('m-nav--scrolled');
+        } else {
+          nav.classList.remove('m-nav--scrolled');
+        }
+
+        if (currentScroll > lastScroll && currentScroll > 300) {
+          nav.classList.add('m-nav--hidden');
+        } else {
+          nav.classList.remove('m-nav--hidden');
+        }
+
+        lastScroll = currentScroll;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(updateNav);
+          ticking = true;
+        }
+      });
+    })();
+
+    // Scroll reveal with stagger support
+    (function() {
+      var reveals = document.querySelectorAll('.m-reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('m-reveal--visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Count-up animation for .m-stat__number elements
+    (function() {
+      var statNumbers = document.querySelectorAll('.m-stat__number');
+      if (!statNumbers.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statNumbers.forEach(function(el) { observer.observe(el); });
+
+      function animateStat(el) {
+        var raw = el.textContent.trim();
+        var prefix = '';
+        var suffix = '';
+        var remaining = raw;
+
+        // Extract leading prefix characters (+, $)
+        var prefixMatch = remaining.match(/^([+$]*)/);
+        if (prefixMatch && prefixMatch[1]) {
+          prefix = prefixMatch[1];
+          remaining = remaining.substring(prefix.length);
+        }
+
+        // Extract the numeric part (including decimals)
+        var numMatch = remaining.match(/^[\d.]+/);
+        if (!numMatch) return;
+        var numStr = numMatch[0];
+        suffix = remaining.substring(numStr.length); // e.g. "%+", "x", "M", "/hr", "/5"
+
+        var target = parseFloat(numStr);
+        if (isNaN(target) || target === 0) return;
+
+        var hasDecimal = numStr.indexOf('.') !== -1;
+        var decimalPlaces = hasDecimal ? (numStr.split('.')[1] || '').length : 0;
+        var duration = 1200;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          if (hasDecimal) {
+            current = current.toFixed(decimalPlaces);
+          } else {
+            current = Math.round(current);
+          }
+          el.textContent = prefix + current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+    })();
+
+    // Count-up animation for .wm-impact__number elements
+    (function() {
+      var impactNumbers = document.querySelectorAll('.wm-impact__number');
+      if (!impactNumbers.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      impactNumbers.forEach(function(el) { observer.observe(el); });
+
+      function animateStat(el) {
+        var raw = el.textContent.trim();
+        var prefix = '';
+        var suffix = '';
+        var remaining = raw;
+
+        // Extract leading prefix characters (+, $)
+        var prefixMatch = remaining.match(/^([+$]*)/);
+        if (prefixMatch && prefixMatch[1]) {
+          prefix = prefixMatch[1];
+          remaining = remaining.substring(prefix.length);
+        }
+
+        // Extract the numeric part (including decimals)
+        var numMatch = remaining.match(/^[\d.]+/);
+        if (!numMatch) return;
+        var numStr = numMatch[0];
+        suffix = remaining.substring(numStr.length); // e.g. "%+", "x", "M", "/hr", "/5"
+
+        var target = parseFloat(numStr);
+        if (isNaN(target) || target === 0) return;
+
+        var hasDecimal = numStr.indexOf('.') !== -1;
+        var decimalPlaces = hasDecimal ? (numStr.split('.')[1] || '').length : 0;
+        var duration = 1200;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          if (hasDecimal) {
+            current = current.toFixed(decimalPlaces);
+          } else {
+            current = Math.round(current);
+          }
+          el.textContent = prefix + current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+    })();
+  </script>
+
+</body>
+</html>
